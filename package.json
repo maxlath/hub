@@ -1,0 +1,34 @@
+{
+  "name": "wikidata-hub",
+  "version": "1.0.0",
+  "description": "a small webservice to handle redirections from a Wikidata id to Wikimedia sites and beyond",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "watch": "supervisor -w index.js,lib,config index.js",
+    "lint": "standard",
+    "update-toc": "doctoc README.md",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wikidata",
+    "wikipedia",
+    "redirections",
+    "images"
+  ],
+  "author": "maxlath",
+  "license": "MIT",
+  "dependencies": {
+    "bluereq": "^2.1.4",
+    "chalk": "^2.3.0",
+    "config": "^1.28.1",
+    "express": "^4.16.2",
+    "inv-loggers": "^3.3.1",
+    "morgan": "^1.9.0",
+    "wikidata-sdk": "^5.5.0"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3",
+    "supervisor": "^0.12.0"
+  }
+}
