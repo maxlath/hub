@@ -91,4 +91,14 @@ describe('hub', () => {
     })
     .catch(done)
   })
+
+  it('should fallback on the next project in the site chain', done => {
+    get('/Q184226?site=wikivoyage,wikiquote,wikipedia&lang=als,oc,fr,en')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://fr.wikiquote.org/wiki/Gilles_Deleuze')
+      done()
+    })
+    .catch(done)
+  })
 })
