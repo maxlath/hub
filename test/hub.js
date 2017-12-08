@@ -41,4 +41,54 @@ describe('hub', () => {
     })
     .catch(done)
   })
+
+  it('should take the site from the query', done => {
+    get('/Q184226?site=wikiquote')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://en.wikiquote.org/wiki/Gilles_Deleuze')
+      done()
+    })
+    .catch(done)
+  })
+
+  it('should combine site and lang query parameters', done => {
+    get('/Q184226?site=wikiquote&lang=fr')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://fr.wikiquote.org/wiki/Gilles_Deleuze')
+      done()
+    })
+    .catch(done)
+  })
+
+  it('should return the site for the first matching lang in the fallback chain', done => {
+    get('/Q184226?lang=als,oc,fr,en')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://oc.wikipedia.org/wiki/Gilles_Deleuze')
+      done()
+    })
+    .catch(done)
+  })
+
+  it('should return the site for the first matching lang in the fallback chain, even on the fallback site', done => {
+    get('/Q184226?site=wikivoyage&lang=als,oc,fr,en')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://oc.wikipedia.org/wiki/Gilles_Deleuze')
+      done()
+    })
+    .catch(done)
+  })
+
+  it('should fallback in the same project', done => {
+    get('/Q184226?site=wikiquote&lang=ja')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://en.wikiquote.org/wiki/Gilles_Deleuze')
+      done()
+    })
+    .catch(done)
+  })
 })
