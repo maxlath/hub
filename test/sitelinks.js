@@ -1,17 +1,7 @@
 require('should')
-const { port } = require('config')
-const host = 'http://localhost:' + port
-const breq = require('bluereq')
+const { get } = require('./lib/utils')
 
-const get = (url, lang) => {
-  return breq.get({
-    url: host+url,
-    headers: { 'accept-language': lang },
-    followRedirect: false
-  })
-}
-
-describe('hub', () => {
+describe('hub:sitelinks', () => {
   it('should redirect to the English Wikipedia by default', done => {
     get('/Q184226')
     .then(res => {
