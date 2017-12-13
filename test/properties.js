@@ -1,15 +1,16 @@
 require('should')
-const { get } = require('./lib/utils')
+const { get, undesiredRes, undesiredErr } = require('./lib/utils')
 
-describe('hub:property', () => {
+describe('property', () => {
   it('should reject invalid properties', done => {
     get('/Q37033?property=P8561241251')
+    .then(undesiredRes(done))
     .catch(err => {
       err.statusCode.should.equal(400)
       err.body.message.should.equal('invalid property id')
       done()
     })
-    .catch(done)
+    .catch(undesiredErr(done))
   })
 
   it('should support properties of type Url', done => {
@@ -19,7 +20,7 @@ describe('hub:property', () => {
       res.headers.location.should.equal('https://www.w3.org/')
       done()
     })
-    .catch(done)
+    .catch(undesiredErr(done))
   })
 
   it('should support properties of type ExternalId', done => {
@@ -29,6 +30,6 @@ describe('hub:property', () => {
       res.headers.location.should.equal('https://www.gutenberg.org/ebooks/author/35316')
       done()
     })
-    .catch(done)
+    .catch(undesiredErr(done))
   })
 })

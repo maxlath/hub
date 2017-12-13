@@ -1,7 +1,7 @@
 require('should')
-const { get } = require('./lib/utils')
+const { get, undesiredErr } = require('./lib/utils')
 
-describe('hub:sitelinks', () => {
+describe('sitelinks', () => {
   it('should redirect to the English Wikipedia by default', done => {
     get('/Q184226')
     .then(res => {
@@ -9,7 +9,7 @@ describe('hub:sitelinks', () => {
       res.headers.location.should.equal('https://en.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
-    .catch(done)
+    .catch(undesiredErr(done))
   })
 
   it('should guess the language from the headers', done => {
@@ -19,7 +19,7 @@ describe('hub:sitelinks', () => {
       res.headers.location.should.equal('https://fr.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
-    .catch(done)
+    .catch(undesiredErr(done))
   })
 
   it('should give priority to the language in the query', done => {
@@ -29,7 +29,7 @@ describe('hub:sitelinks', () => {
       res.headers.location.should.equal('https://de.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
-    .catch(done)
+    .catch(undesiredErr(done))
   })
 
   it('should take the site from the query', done => {
@@ -39,7 +39,7 @@ describe('hub:sitelinks', () => {
       res.headers.location.should.equal('https://en.wikiquote.org/wiki/Gilles_Deleuze')
       done()
     })
-    .catch(done)
+    .catch(undesiredErr(done))
   })
 
   it('should combine site and lang query parameters', done => {
@@ -49,7 +49,7 @@ describe('hub:sitelinks', () => {
       res.headers.location.should.equal('https://fr.wikiquote.org/wiki/Gilles_Deleuze')
       done()
     })
-    .catch(done)
+    .catch(undesiredErr(done))
   })
 
   it('should return the site for the first matching lang in the fallback chain', done => {
@@ -59,7 +59,7 @@ describe('hub:sitelinks', () => {
       res.headers.location.should.equal('https://oc.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
-    .catch(done)
+    .catch(undesiredErr(done))
   })
 
   it('should return the site for the first matching lang in the fallback chain, even on the fallback site', done => {
@@ -69,7 +69,7 @@ describe('hub:sitelinks', () => {
       res.headers.location.should.equal('https://oc.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
-    .catch(done)
+    .catch(undesiredErr(done))
   })
 
   it('should fallback in the same project', done => {
@@ -79,7 +79,7 @@ describe('hub:sitelinks', () => {
       res.headers.location.should.equal('https://en.wikiquote.org/wiki/Gilles_Deleuze')
       done()
     })
-    .catch(done)
+    .catch(undesiredErr(done))
   })
 
   it('should fallback on the next project in the site chain', done => {
@@ -89,6 +89,6 @@ describe('hub:sitelinks', () => {
       res.headers.location.should.equal('https://fr.wikiquote.org/wiki/Gilles_Deleuze')
       done()
     })
-    .catch(done)
+    .catch(undesiredErr(done))
   })
 })
