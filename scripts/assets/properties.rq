@@ -1,0 +1,12 @@
+SELECT ?property ?label ?type ?urlFormat
+WHERE {
+  ?property a wikibase:Property .
+  ?property wikibase:propertyType ?propertyType .
+  BIND(STRAFTER(STR(?propertyType), '#') as ?type)
+  OPTIONAL { ?property wdt:P1630 ?urlFormat . }
+  # Not using 'SERVICE wikibase:label' to get a flat simplified object
+  # and not { value, label }
+  ?property rdfs:label ?label .
+  FILTER((LANG(?label)) = "en")
+}
+ORDER BY ASC(xsd:integer(STRAFTER(STR(?property), 'P')))
