@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const { name, port } = require('config')
-const logger = require('inv-loggers')
+const logger = require('./lib/logger')
 const express = require('express')
 const morgan = require('morgan')
 
