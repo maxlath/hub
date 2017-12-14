@@ -74,6 +74,8 @@ Pass a `property` parameter to generate the redirection URL from the entity clai
 | `/Q34981?property=P1938`                    | https://www.gutenberg.org/ebooks/author/35316        |
 | `/Q624023?property=P2002`                   | https://twitter.com/eff                              |
 |                                             |                                                      |
+| **WikibaseItem**                            |                                                      |
+| `/Q155?property=P38`                        | https://en.wikipedia.org/wiki/Brazilian_real         |
 
 ### aliases
 Alternatively to a Wikidata id, you can pass a key built from sitelinks as starting point:
