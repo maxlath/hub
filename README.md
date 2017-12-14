@@ -68,7 +68,18 @@ Pass a `property` parameter to generate the redirection URL from the entity clai
 | `/Q21980377?property=P856`                  | https://sci-hub.tw                                   |
 | `/Q1103345?property=P953`                   | http://www.cluetrain.com/#manifesto                  |
 | `/Q756100?property=P1324`                   | https://github.com/nodejs/node                       |
+| `/Q132790?property=P4238`                   | http://www.biarritz.fr/webcam_2.html                 |
 |                                             |                                                      |
 | **ExternalId**                              |                                                      |
 | `/Q34981?property=P1938`                    | https://www.gutenberg.org/ebooks/author/35316        |
+| `/Q624023?property=P2002`                   | https://twitter.com/eff                              |
 |                                             |                                                      |
+
+### aliases
+Alternatively to a Wikidata id, you can pass a key built from sitelinks as starting point:
+|  request                                              | redirection                                                                             |
+|:------------------------------------------------------|:----------------------------------------------------------------------------------------|
+| `/frwikivoyage:Allemagne`                             | https://en.wikipedia.org/wiki/Germany                                                   |
+| `/eswikinews:Categoría:Alemania`                      | https://en.wikipedia.org/wiki/Germany                                                   |
+| `/ocwiki:Alemanha?lang=de`                            | https://de.wikipedia.org/wiki/Deutschland                                               |
+| `/ocwiki:Alemanha?lang=el,fa&site=wikivoyage`         | https://el.wikivoyage.org/wiki/%CE%93%CE%B5%CF%81%CE%BC%CE%B1%CE%BD%CE%AF%CE%B1         |
