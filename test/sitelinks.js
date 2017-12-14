@@ -91,4 +91,14 @@ describe('sitelinks', () => {
     })
     .catch(undesiredErr(done))
   })
+
+  it('should be able to fallback on wikidata', done => {
+    get('/Q184226?site=wikivoyage,wikidata,wikipedia&lang=als,oc,fr,en')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://wikidata.org/wiki/Q184226')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
 })
