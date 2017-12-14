@@ -3,11 +3,22 @@ const { get, undesiredRes, undesiredErr } = require('./lib/utils')
 
 describe('property', () => {
   it('should reject invalid properties', done => {
-    get('/Q37033?property=P8561241251')
+    get('/Q37033?property=bla')
     .then(undesiredRes(done))
     .catch(err => {
       err.statusCode.should.equal(400)
       err.body.message.should.equal('invalid property id')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
+  it('should reject unknown properties', done => {
+    get('/Q37033?property=P8561241251')
+    .then(undesiredRes(done))
+    .catch(err => {
+      err.statusCode.should.equal(400)
+      err.body.message.should.equal('unknown property id')
       done()
     })
     .catch(undesiredErr(done))
