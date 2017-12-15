@@ -24,6 +24,17 @@ describe('property', () => {
     .catch(undesiredErr(done))
   })
 
+  it('should reject unsupported properties', done => {
+    get('/Q47598?property=P1922')
+    .then(undesiredRes(done))
+    .catch(err => {
+      err.statusCode.should.equal(400)
+      err.body.message.should.equal('unsupported property type')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
   describe('Url', () => {
     it('should support properties of type Url', done => {
       get('/Q37033?property=P856')
