@@ -90,4 +90,16 @@ describe('property', () => {
       .catch(undesiredErr(done))
     })
   })
+
+  describe('GlobeCoordinate', () => {
+    it('should support properties of type GlobeCoordinate', done => {
+      get('/Q25373?property=P625')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://www.openstreetmap.org/?mlat=35.2542&mlon=-24.2585')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+  })
 })
