@@ -102,4 +102,25 @@ describe('property', () => {
       .catch(undesiredErr(done))
     })
   })
+
+  describe('CommonsMedia', () => {
+    it('should support properties of type CommonsMedia', done => {
+      get('/Q241?property=P242')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://commons.wikimedia.org/wiki/File:Cuba_(orthographic_projection).svg')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+    it('should accept a width parameters', done => {
+      get('/Q241?property=P242&width=1000')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+  })
 })
