@@ -45,6 +45,16 @@ describe('property', () => {
     .catch(undesiredErr(done))
   })
 
+  it('should fallback', done => {
+    get('/Q241?property=P18,P242,P94,P2002')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/File:Cuba_(orthographic_projection).svg')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
   describe('Url', () => {
     it('should support properties of type Url', done => {
       get('/Q37033?property=P856')
