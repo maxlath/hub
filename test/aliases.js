@@ -52,6 +52,16 @@ describe('aliases', () => {
     .catch(undesiredErr(done))
   })
 
+  it('should default to enwiki', done => {
+    get('/DIY')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://en.wikipedia.org/wiki/Do_it_yourself')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
   it('should reject an invalid sitelink', done => {
     get('/eswikinews:some_missing_article')
     .then(undesiredRes(done))
