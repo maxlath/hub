@@ -42,6 +42,16 @@ describe('aliases', () => {
     .catch(undesiredErr(done))
   })
 
+  it('should resolve sitelink aliases redirections', done => {
+    get('/enwiki:DIY?site=wikidata')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://wikidata.org/wiki/Q26384')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
   it('should reject an invalid sitelink', done => {
     get('/eswikinews:some_missing_article')
     .then(undesiredRes(done))
