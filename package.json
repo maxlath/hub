@@ -21,7 +21,7 @@
   "author": "maxlath",
   "license": "MIT",
   "dependencies": {
-    "bluereq": "^2.1.4",
+    "bluereq": "^2.1.5",
     "chalk": "^2.3.0",
     "config": "^1.28.1",
     "express": "^4.16.2",
