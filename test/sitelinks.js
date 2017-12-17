@@ -101,4 +101,14 @@ describe('sitelinks', () => {
     })
     .catch(undesiredErr(done))
   })
+
+  it('should accept parameters short version', done => {
+    get('/Q184226?s=wikivoyage,wikidata,wikipedia&l=als,oc,fr,en')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://wikidata.org/wiki/Q184226')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
 })

@@ -35,6 +35,16 @@ describe('property', () => {
     .catch(undesiredErr(done))
   })
 
+  it('should accept parameters short version', done => {
+    get('/Q241?p=P242&w=1000')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
   describe('Url', () => {
     it('should support properties of type Url', done => {
       get('/Q37033?property=P856')
