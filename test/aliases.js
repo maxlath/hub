@@ -62,6 +62,16 @@ describe('aliases', () => {
     .catch(undesiredErr(done))
   })
 
+  it('should default to enwiki sitelink key (2)', done => {
+    get('/Edward_Snowden')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://en.wikipedia.org/wiki/Edward_Snowden')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
   it('should default to wiki sitelink project', done => {
     get('/fr:COURLY')
     .then(res => {
