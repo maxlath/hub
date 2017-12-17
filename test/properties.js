@@ -143,4 +143,26 @@ describe('property', () => {
       .catch(undesiredErr(done))
     })
   })
+
+  describe('domains', () => {
+    it("should accept an 'image' domains", done => {
+      get('/Q241?property=image')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://commons.wikimedia.org/wiki/File:Flag_of_Cuba.svg')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+
+    it("should accept an 'social' domains", done => {
+      get('/Edward_Snowden?property=social')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://twitter.com/Snowden')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+  })
 })
