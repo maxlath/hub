@@ -2,6 +2,10 @@
 
 A small webservice to handle redirections from a Wikidata id to Wikimedia sites and beyond
 
+**Target audience**:
+- Wikidata-centered tools developers
+- URL wizards
+
 ## Summary
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -15,6 +19,8 @@ A small webservice to handle redirections from a Wikidata id to Wikimedia sites 
   - [lang](#lang)
   - [site](#site)
   - [property](#property)
+  - [aliases](#aliases)
+  - [lazy parameters](#lazy-parameters)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -33,6 +39,7 @@ npm run watch
 ## Redirections from a Wikidata id
 
 ### default
+
 Redirect to the default site, `wikipedia`, with the user language guessed from the request `accept-language` header, falling back to English if the language header can't be found or the Wikipedia page doesn't exist in this language.
 
 |  request                                    | redirection                                          |
@@ -40,6 +47,7 @@ Redirect to the default site, `wikipedia`, with the user language guessed from t
 | `/Q184226`                                  | https://en.wikipedia.org/wiki/Gilles_Deleuze         |
 
 ### lang
+
 Pass a `lang` parameter to override the `accept-language` header. Pass several values to set the fallback chain.
 
 |  request                                    | redirection                                          |
@@ -48,6 +56,7 @@ Pass a `lang` parameter to override the `accept-language` header. Pass several v
 | `/Q184226?lang=als,oc,fr,en&site=wikiquote` | https://oc.wikipedia.org/wiki/Gilles_Deleuze         |
 
 ### site
+
 Pass a `site` parameter to redirect to another site than `wikipedia`. Pass several values to set the fallback chain. When combined with a `lang` fallback chain, the site fallback has priority.
 
 |  request                                                           | redirection                                          |
@@ -59,29 +68,58 @@ Pass a `site` parameter to redirect to another site than `wikipedia`. Pass sever
 | `/Q184226?site=wikivoyage,wikiquote,wikipedia&lang=als,oc,fr,en`   | https://fr.wikiquote.org/wiki/Gilles_Deleuze         |
 
 ### property
+
 Pass a `property` parameter to generate the redirection URL from the entity claims associated to the desired property. The following examples illustrate the different behaviors depending on the property type:
 
-|  **request**                                | **redirection**                                      |
-|---------------------------------------------|------------------------------------------------------|
-|                                             |                                                      |
-| **Url**                                     |                                                      |
-| `/Q21980377?property=P856`                  | https://sci-hub.tw                                   |
-| `/Q1103345?property=P953`                   | http://www.cluetrain.com/#manifesto                  |
-| `/Q756100?property=P1324`                   | https://github.com/nodejs/node                       |
-| `/Q132790?property=P4238`                   | http://www.biarritz.fr/webcam_2.html                 |
-|                                             |                                                      |
-| **ExternalId**                              |                                                      |
-| `/Q34981?property=P1938`                    | https://www.gutenberg.org/ebooks/author/35316        |
-| `/Q624023?property=P2002`                   | https://twitter.com/eff                              |
-|                                             |                                                      |
-| **WikibaseItem**                            |                                                      |
-| `/Q155?property=P38`                        | https://en.wikipedia.org/wiki/Brazilian_real         |
+|  **request**                                | **redirection**                                                                                   |
+|---------------------------------------------|---------------------------------------------------------------------------------------------------|
+|                                             |                                                                                                   |
+| **Url**                                     |                                                                                                   |
+| `/Q21980377?property=P856`                  | https://sci-hub.tw                                                                                |
+| `/Q1103345?property=P953`                   | http://www.cluetrain.com/#manifesto                                                               |
+| `/Q756100?property=P1324`                   | https://github.com/nodejs/node                                                                    |
+| `/Q132790?property=P4238`                   | http://www.biarritz.fr/webcam_2.html                                                              |
+|                                             |                                                                                                   |
+| **ExternalId**                              |                                                                                                   |
+| `/Q34981?property=P1938`                    | https://www.gutenberg.org/ebooks/author/35316                                                     |
+| `/Q624023?property=P2002`                   | https://twitter.com/eff                                                                           |
+|                                             |                                                                                                   |
+| **WikibaseItem**                            |                                                                                                   |
+| `/Q155?property=P38`                        | https://en.wikipedia.org/wiki/Brazilian_real                                                      |
+|                                             |                                                                                                   |
+| **CommonsMedia**                            |                                                                                                   |
+| `/Q241?property=P242`                       | https://commons.wikimedia.org/wiki/File:Cuba_(orthographic_projection).svg                        |
+| `/Q241?property=P242&width=1000`            | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
+|                                             |                                                                                                   |
+| **GlobeCoordinate**                         |                                                                                                   |
+| `/Q25373?property=P625`                     | https://www.openstreetmap.org/?mlat=35.2542&mlon=-24.2585                                         |
+|                                             |                                                                                                   |
+
+Not supported: `String`, `Time`, `Monolingualtext`, `Quantity`, `WikibaseProperty`, `Math`
 
 ### aliases
-Alternatively to a Wikidata id, you can pass a key built from sitelinks as starting point:
+
+Alternatively to a Wikidata id, you can pass a key built from sitelinks as starting point, defaulting to `enwiki`.
 |  request                                              | redirection                                                                             |
 |:------------------------------------------------------|:----------------------------------------------------------------------------------------|
 | `/frwikivoyage:Allemagne`                             | https://en.wikipedia.org/wiki/Germany                                                   |
 | `/eswikinews:Categoría:Alemania`                      | https://en.wikipedia.org/wiki/Germany                                                   |
 | `/ocwiki:Alemanha?lang=de`                            | https://de.wikipedia.org/wiki/Deutschland                                               |
 | `/ocwiki:Alemanha?lang=el,fa&site=wikivoyage`         | https://el.wikivoyage.org/wiki/%CE%93%CE%B5%CF%81%CE%BC%CE%B1%CE%BD%CE%AF%CE%B1         |
+| `/enwiki:Edward_Snowden?property=P2002`               | https://twitter.com/Snowden                                                             |
+| `/enwiki:DIY?site=wikidata`                           | https://www.wikidata.org/wiki/Q26384                                                    |
+| `/DIY?site=wikidata`                                  | https://www.wikidata.org/wiki/Q26384                                                    |
+
+### lazy parameters
+
+| short | long       |
+|-------|:-----------|
+| `s`   | `site`     |
+| `l`   | `lang`     |
+| `p`   | `property` |
+| `w`   | `width`    |
+
+|  **request**                 | **redirection**                                                                                   |
+|------------------------------|---------------------------------------------------------------------------------------------------|
+| `/Q184226?s=wikiquote&l=fr`  | https://fr.wikiquote.org/wiki/Gilles_Deleuze                                                      |
+| `/Q241?p=P242&w=1000`        | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
