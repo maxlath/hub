@@ -6,6 +6,19 @@ A small webservice to handle redirections from a Wikidata id to Wikimedia sites 
 - Wikidata-centered tools developers
 - URL wizards
 
+A few examples to catch your interest:
+- we can now link to *Wikipedia in the user's favorite language*:
+  - [/Lyon](https://tools.wmflabs.org/hub/Lyon)
+  - [/Berlin](https://tools.wmflabs.org/hub/Berlin)
+
+- we can link from one Wikipedia edition to the other:
+  - [/en:Economy?lang=de](https://tools.wmflabs.org/hub/en:Economy?lang=de)
+
+- for your next prototype, illustrate your concepts the lazy way:
+  - ![image example](https://tools.wmflabs.org/hub/frwiki:Laniakea?p=image&w=256) ([/frwiki:Laniakea?p=image&w=256](https://tools.wmflabs.org/hub/frwiki:Laniakea?p=image&w=256))
+  - ![avatar example](https://tools.wmflabs.org/hub/https://tools.wmflabs.org/hub/Q42262?p=avatar&w=128) ([/Q42262?p=avatar&w=128](https://tools.wmflabs.org/hub/https://tools.wmflabs.org/hub/Q42262?p=avatar&w=128))
+
+https://tools.wmflabs.org/hub/frwiki:Laniakea
 ## Summary
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
