@@ -49,7 +49,7 @@ describe('property', () => {
     get('/Q241?property=P18,P242,P94,P2002')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/File:Cuba_(orthographic_projection).svg')
+      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg')
       done()
     })
     .catch(undesiredErr(done))
@@ -128,7 +128,7 @@ describe('property', () => {
       get('/Q241?property=P242')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://commons.wikimedia.org/wiki/File:Cuba_(orthographic_projection).svg')
+        res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg')
         done()
       })
       .catch(undesiredErr(done))
@@ -144,22 +144,31 @@ describe('property', () => {
     })
   })
 
-  describe('domains', () => {
-    it("should accept an 'image' domains", done => {
+  describe('bundles', () => {
+    it("should accept an 'image' bundles", done => {
       get('/Q241?property=image')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://commons.wikimedia.org/wiki/File:Flag_of_Cuba.svg')
+        res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Cuba.svg')
         done()
       })
       .catch(undesiredErr(done))
     })
 
-    it("should accept an 'social' domains", done => {
+    it("should accept an 'social' bundles", done => {
       get('/Edward_Snowden?property=social')
       .then(res => {
         res.statusCode.should.equal(302)
         res.headers.location.should.equal('https://twitter.com/Snowden')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+    it("should make use of external id avatars in the 'avatar' bundle", done => {
+      get('/Q4032?property=avatar&width=150')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://avatars.io/twitter/UnivLyon1/large')
         done()
       })
       .catch(undesiredErr(done))

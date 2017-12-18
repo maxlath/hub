@@ -78,17 +78,17 @@ Pass a `property` parameter to generate the redirection URL from the entity clai
 | `/Q21980377?property=P856`                  | https://sci-hub.tw                                                                                |
 | `/Q1103345?property=P953`                   | http://www.cluetrain.com/#manifesto                                                               |
 | `/Q756100?property=P1324`                   | https://github.com/nodejs/node                                                                    |
-| `/Q132790?property=P4238`                   | http://www.biarritz.fr/webcam_2.html                                                              |
+| `/Q132790?property=P4238,P856`              | http://www.biarritz.fr/webcam_2.html                                                              |
 |                                             |                                                                                                   |
 | **ExternalId**                              |                                                                                                   |
 | `/Q34981?property=P1938`                    | https://www.gutenberg.org/ebooks/author/35316                                                     |
-| `/Q624023?property=P2002`                   | https://twitter.com/eff                                                                           |
+| `/Q624023?property=P2002,P2003`             | https://twitter.com/EFF                                                                           |
 |                                             |                                                                                                   |
 | **WikibaseItem**                            |                                                                                                   |
 | `/Q155?property=P38`                        | https://en.wikipedia.org/wiki/Brazilian_real                                                      |
 |                                             |                                                                                                   |
 | **CommonsMedia**                            |                                                                                                   |
-| `/Q241?property=P242`                       | https://commons.wikimedia.org/wiki/File:Cuba_(orthographic_projection).svg                        |
+| `/Q241?property=P242`                       | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg            |
 | `/Q241?property=P242&width=1000`            | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
 |                                             |                                                                                                   |
 | **GlobeCoordinate**                         |                                                                                                   |
@@ -96,6 +96,22 @@ Pass a `property` parameter to generate the redirection URL from the entity clai
 |                                             |                                                                                                   |
 
 Not supported: `String`, `Time`, `Monolingualtext`, `Quantity`, `WikibaseProperty`, `Math`
+
+#### properties bundles
+Instead of a list of properties, you can use special bundle keys, that behave like a list of properties.
+The `image` and `avatar` bundles are designed to be a cheap way to give an image to an entity:
+```html
+<img src="/Q624023?property=image,avatar&width=256" />
+```
+
+|  **request**                                | **redirection**                                                                                   |
+|---------------------------------------------|---------------------------------------------------------------------------------------------------|
+| `/Q624023?property=image`                   | https://commons.wikimedia.org/wiki/Special:FilePath/EFF_Logo.svg                                  |
+| `/Q624023?property=avatar`                  | https://avatars.io/twitter/EFF/                                                                   |
+| `/Q624023?property=social`                  | https://twitter.com/EFF                                                                           |
+| `/Q604319?property=social`                  | https://tools.wmflabs.org/wikidata-externalid-url/?p=4033&id=LaQuadrature@mamot.fr                |
+| `/Q624023?property=image,avatar&width=120`  | https://commons.wikimedia.org/wiki/Special:FilePath/EFF_Logo.svg?width=120                        |
+| `/Q604319?property=avatar,image&width=256`  | https://avatars.io/twitter/laquadrature/large                                                     |
 
 ### aliases
 
