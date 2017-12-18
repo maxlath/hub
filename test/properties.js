@@ -55,6 +55,16 @@ describe('property', () => {
     .catch(undesiredErr(done))
   })
 
+  it('should support properties', done => {
+    get('/P610?p=P1855')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://en.wikipedia.org/wiki/Norway')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
   describe('Url', () => {
     it('should support properties of type Url', done => {
       get('/Q37033?property=P856')
