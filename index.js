@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-const { name, port } = require('config')
+const { name, port: configPort } = require('config')
+const port = process.env.PORT ? parseInt(process.env.PORT) : configPort
 const logger = require('./lib/logger')
 const express = require('express')
 const morgan = require('morgan')
