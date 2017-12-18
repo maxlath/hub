@@ -16,7 +16,7 @@ describe('aliases', () => {
     get('/dewiki:Gilles_Deleuze?site=wikidata')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://wikidata.org/wiki/Q184226')
+      res.headers.location.should.equal('https://www.wikidata.org/wiki/Q184226')
       done()
     })
     .catch(undesiredErr(done))
@@ -46,7 +46,7 @@ describe('aliases', () => {
     get('/enwiki:DIY?site=wikidata')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://wikidata.org/wiki/Q26384')
+      res.headers.location.should.equal('https://www.wikidata.org/wiki/Q26384')
       done()
     })
     .catch(undesiredErr(done))

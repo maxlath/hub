@@ -96,7 +96,7 @@ describe('sitelinks', () => {
     get('/Q184226?site=wikivoyage,wikidata,wikipedia&lang=als,oc,fr,en')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://wikidata.org/wiki/Q184226')
+      res.headers.location.should.equal('https://www.wikidata.org/wiki/Q184226')
       done()
     })
     .catch(undesiredErr(done))
@@ -106,7 +106,7 @@ describe('sitelinks', () => {
     get('/Q184226?s=wikivoyage,wikidata,wikipedia&l=als,oc,fr,en')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://wikidata.org/wiki/Q184226')
+      res.headers.location.should.equal('https://www.wikidata.org/wiki/Q184226')
       done()
     })
     .catch(undesiredErr(done))

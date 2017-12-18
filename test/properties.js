@@ -104,7 +104,7 @@ describe('property', () => {
       get('/Q155?property=P38&site=wikidata')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://wikidata.org/wiki/Q173117')
+        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q173117')
         done()
       })
       .catch(undesiredErr(done))
