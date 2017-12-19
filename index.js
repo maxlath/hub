@@ -9,7 +9,7 @@ const app = express()
 app.use(morgan('dev'))
 
 app.get(`${root}/:id/?`, require('./lib/hub'))
-app.get(`${root}`, require('./lib/hello'))
+app.get(`${root}/`, require('./lib/hello'))
 
 app.listen(port, err => {
   if (err) logger.error(err, 'startup error')
