@@ -112,6 +112,16 @@ describe('sitelinks', () => {
     .catch(undesiredErr(done))
   })
 
+  it('should support projects short versions', done => {
+    get('/Q184226?s=wv,wd,wp&l=als,oc,fr,en')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://www.wikidata.org/wiki/Q184226')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
   it('should support properties', done => {
     get('/P610')
     .then(res => {
