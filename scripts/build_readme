@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+const fs = require('fs')
+
+var text = `
+<!-- this file is built by ./scripts/build_readme
+Make your edits in docs/README.base.md -->
+
+`
+
+text += fs.readFileSync('./docs/README.base.md')
+  .toString()
+  // Having those links directly  would make way too long lines
+  // to be workable with all those tables
+  .replace(/\`(\/.*)\`/g, '[$1](https://tools.wmflabs.org/hub$1)')
+  .replace(/\(\//g, '(https://tools.wmflabs.org/hub/')
+
+fs.writeFileSync('./README.md', text)

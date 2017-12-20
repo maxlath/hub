@@ -8,7 +8,7 @@
     "watch": "supervisor -w index.js,lib,config index.js",
     "postinstall": "./scripts/postinstall",
     "lint": "standard",
-    "update-toc": "doctoc README.md",
+    "build-readme": "./scripts/build_readme && doctoc README.md",
     "update-properties": "./scripts/update_properties",
     "test": "mocha"
   },
