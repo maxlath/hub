@@ -1,7 +1,9 @@
 require('should')
 const { get, undesiredRes, undesiredErr } = require('./lib/utils')
 
-describe('aliases', () => {
+describe('aliases', function () {
+  this.timeout(10000)
+
   describe('sitelinks', () => {
     it('should resolve sitelink aliases', done => {
       get('/frwiki:Gilles_Deleuze')
@@ -97,6 +99,36 @@ describe('aliases', () => {
   describe('properties', () => {
     it('should resolve reverse claims', done => {
       get('/P2002:EFF?site=wikidata')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q624023')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+
+    it('should support multiple properties', done => {
+      get('/P2002,P2003:EFF?site=wikidata')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q624023')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+
+    it('should guess possible properties from a string key', done => {
+      get('/twitter:EFF?s=wd')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q624023')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+
+    it('should support multiple properties with a mix of properties and strings', done => {
+      get('/P4033,twitter,P2003:EFF?site=wikidata')
       .then(res => {
         res.statusCode.should.equal(302)
         res.headers.location.should.equal('https://www.wikidata.org/wiki/Q624023')
