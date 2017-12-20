@@ -18,7 +18,6 @@ A few examples to catch your interest:
   - ![image example](https://tools.wmflabs.org/hub/frwiki:Laniakea?p=image&w=256) ([/frwiki:Laniakea?p=image&w=256](https://tools.wmflabs.org/hub/frwiki:Laniakea?p=image&w=256))
   - ![avatar example](https://tools.wmflabs.org/hub/https://tools.wmflabs.org/hub/Q42262?p=avatar&w=128) ([/Q42262?p=avatar&w=128](https://tools.wmflabs.org/hub/https://tools.wmflabs.org/hub/Q42262?p=avatar&w=128))
 
-https://tools.wmflabs.org/hub/frwiki:Laniakea
 ## Summary
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -142,14 +141,28 @@ Alternatively to a Wikidata id, you can pass a key built from sitelinks as start
 
 ### lazy parameters
 
-| short | long       |
-|-------|:-----------|
-| `s`   | `site`     |
-| `l`   | `lang`     |
-| `p`   | `property` |
-| `w`   | `width`    |
+| long            | short            |
+|-----------------|:-----------------|
+|                 |                  |
+| **parameters**  |                  |
+| `site`          | `s`              |
+| `lang`          | `l`              |
+| `property`      | `p`              |
+| `width`         | `w`              |
+|                 |                  |
+| **projects**    |                  |
+| `wikidata `     | `wd`             |
+| `wikipedia`     | `wp`             |
+| `commons`       | `c`              |
+| `wikisource`    | `ws`             |
+| `wikiquote`     | `wq`             |
+| `wiktionary`    | `wt`             |
+| `wikivoyage`    | `wv`             |
+| `wikiversity`   | `wy`             |
+| `wikinews`      | `wn`             |
+
 
 |  **request**                                    | **redirection**                                                                                   |
 |-------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| `/Q184226?s=wikiquote&l=fr`                     | https://fr.wikiquote.org/wiki/Gilles_Deleuze                                                      |
+| `/Q184226?s=wq,wp,wd&l=fr,en,de`                | https://fr.wikiquote.org/wiki/Gilles_Deleuze                                                      |
 | `/Q241?p=P242&w=1000`                           | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
