@@ -94,5 +94,15 @@ describe('aliases', () => {
     })
   })
 
-  describe('properties', () => {})
+  describe('properties', () => {
+    it('should resolve reverse claims', done => {
+      get('/P2002:EFF?site=wikidata')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q624023')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+  })
 })
