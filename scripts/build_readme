@@ -13,5 +13,6 @@ text += fs.readFileSync('./docs/README.base.md')
   // to be workable with all those tables
   .replace(/\`(\/.*)\`/g, '[$1](https://tools.wmflabs.org/hub$1)')
   .replace(/\(\//g, '(https://tools.wmflabs.org/hub/')
+  .replace(/assets\/images/g, 'https://raw.githubusercontent.com/maxlath/wikidata-hub/master/assets/images')
 
 fs.writeFileSync('./README.md', text)
