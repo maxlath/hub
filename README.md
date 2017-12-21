@@ -1,6 +1,6 @@
 
 <!-- this file is built by ./scripts/build_readme
-Make your edits in docs/README.base.md -->
+Make your edits in docs/readme -->
 
 # wikidata-hub
 
@@ -10,7 +10,7 @@ A small webservice to handle redirections from a Wikidata id to Wikimedia sites 
 - Wikidata-centered tools developers
 - URL wizards
 
-**A few examples to catch your interest**
+**A few examples to catch your interest**:
 
 we can now link to Wikipedia articles about a concept in the user's favorite language:
 - from a Wikidata id: [/Q3](https://tools.wmflabs.org/hub/Q3)
@@ -22,14 +22,15 @@ we can now link to Wikipedia articles about a concept in the user's favorite lan
 but, after choosing your starting point, you can also customize your destination:
 - here we go from one Wikipedia to the other: [/en:Economy?lang=de](https://tools.wmflabs.org/hub/en:Economy?lang=de)
 - here from Wikidata to Wikiquote: [/Q184226?site=wikiquote](https://tools.wmflabs.org/hub/Q184226?site=wikiquote)
+- between any external ids known by Wikidata: [/viaf:24597135?property=P1938](https://tools.wmflabs.org/hub/viaf:24597135?property=P1938)
 
 for your next prototype, illustrate your concepts the lazy way:
 
 <!-- Using local images as Github messes with the raw URLs -->
-|  image                                           | src                                                  |
-|:-------------------------------------------------|:-----------------------------------------------------|
-| ![avatar example](https://raw.githubusercontent.com/maxlath/wikidata-hub/master/assets/images/esa.jpeg)        | [/Q42262?p=avatar&w=128](https://tools.wmflabs.org/hub/Q42262?p=avatar&w=128)                             |
-| ![image example](https://raw.githubusercontent.com/maxlath/wikidata-hub/master/assets/images/laniakea.jpg)     | [/frwiki:Laniakea?p=image&w=256](https://tools.wmflabs.org/hub/frwiki:Laniakea?p=image&w=256)                     |
+|  image                                           | src                                         |
+|:-------------------------------------------------|:--------------------------------------------|
+| ![avatar example](https://raw.githubusercontent.com/maxlath/wikidata-hub/master/assets/images/esa.jpeg)        | [/Q42262?property=avatar&width=128](https://tools.wmflabs.org/hub/Q42262?property=avatar&width=128)         |
+| ![image example](https://raw.githubusercontent.com/maxlath/wikidata-hub/master/assets/images/laniakea.jpg)     | [/frwiki:Laniakea?property=image&width=256](https://tools.wmflabs.org/hub/frwiki:Laniakea?property=image&width=256) |
 
 ## Summary
 
@@ -38,14 +39,17 @@ for your next prototype, illustrate your concepts the lazy way:
 
 
 - [User Guide](#user-guide)
-- [Redirections from a Wikidata id](#redirections-from-a-wikidata-id)
-  - [default](#default)
-  - [lang](#lang)
-  - [site](#site)
-  - [property](#property)
-    - [properties bundles](#properties-bundles)
-  - [aliases](#aliases)
-  - [lazy parameters](#lazy-parameters)
+  - [Origin](#origin)
+    - [Wikidata id](#wikidata-id)
+    - [Wikipedia and other Wikimedia Project](#wikipedia-and-other-wikimedia-project)
+    - [External Ids](#external-ids)
+  - [Destination](#destination)
+    - [Default](#default)
+    - [Wikimedia Projects](#wikimedia-projects)
+        - [lang](#lang)
+        - [site](#site)
+    - [Following a claim](#following-a-claim)
+        - [properties bundles](#properties-bundles)
 - [Developer Guide](#developer-guide)
   - [Dependencies](#dependencies)
   - [Install](#install)
@@ -55,28 +59,72 @@ for your next prototype, illustrate your concepts the lazy way:
 
 ## User Guide
 
-## Redirections from a Wikidata id
+Every URL is built as **a bridge between two points, an origin and a destination**:
+* the **origin** depends on **what you have at hand**: a Wikidata id? some string that might match an Wikipedia article title? in a precise language or in any language? an identifier in an external database?
+* the **destination** depends on **where you would like to go**: would you just like to be show the most relevant associated Wikipedia article for this origin point, or do you have a more precise target language, project, external website?
 
-### default
+The separation between the origin and the destination is expressed in the URL by the `?`: everything before the `?` aims to identify the origin, everything after identifies the destination.
 
-Redirect to the default site, `wikipedia`, with the user language guessed from the request `accept-language` header, falling back to English if the language header can't be found or the Wikipedia page doesn't exist in this language.
+Example:
+
+* url: [/enwiki:Economy?lang=nl&site=wikinews](https://tools.wmflabs.org/hub/enwiki:Economy?lang=nl&site=wikinews)
+* origin: the [`Economy` article in the English Wikipedia](https://en.wikipedia.org/wiki/Economy)
+* destination: [the corresponding article in the Dutch Wikinews](https://nl.wikinews.org/wiki/Categorie:Economie)
+
+### Origin
+
+#### Wikidata id
+As the real hub in this story is Wikidata, every request needs to first resolve to a Wikidata id, which can thus be considered the primary origin point:
+
+|  request                                    | redirection                                          |
+|:--------------------------------------------|:-----------------------------------------------------|
+| [/Q1](https://tools.wmflabs.org/hub/Q1)                                       | https://en.wikipedia.org/wiki/Universe               |
+| [/Q2](https://tools.wmflabs.org/hub/Q2)                                       | https://en.wikipedia.org/wiki/Earth                  |
+| ...                                         |                                                      |
+| [/Q1388426](https://tools.wmflabs.org/hub/Q1388426)                                 | https://en.wikipedia.org/wiki/Bo%C3%ABn-sur-Lignon   |
+
+#### Wikipedia and other Wikimedia Project
+
+Alternatively to a Wikidata id, you can pass a key built from sitelinks as starting point, defaulting to `enwiki`.
+
+|  request                                         | redirection                                                                             |
+|:-------------------------------------------------|:----------------------------------------------------------------------------------------|
+| [/frwikivoyage:Allemagne](https://tools.wmflabs.org/hub/frwikivoyage:Allemagne)                        | https://en.wikipedia.org/wiki/Germany                                                   |
+| [/eswikinews:Categoría:Alemania](https://tools.wmflabs.org/hub/eswikinews:Categoría:Alemania)                 | https://en.wikipedia.org/wiki/Germany                                                   |
+| [/ocwiki:Alemanha?lang=de](https://tools.wmflabs.org/hub/ocwiki:Alemanha?lang=de)                       | https://de.wikipedia.org/wiki/Deutschland                                               |
+| [/ocwiki:Alemanha?lang=el,fa&site=wikivoyage](https://tools.wmflabs.org/hub/ocwiki:Alemanha?lang=el,fa&site=wikivoyage)    | https://el.wikivoyage.org/wiki/%CE%93%CE%B5%CF%81%CE%BC%CE%B1%CE%BD%CE%AF%CE%B1         |
+| [/enwiki:Edward_Snowden?property=P2002](https://tools.wmflabs.org/hub/enwiki:Edward_Snowden?property=P2002)          | https://twitter.com/Snowden                                                             |
+| [/enwiki:DIY?site=wikidata](https://tools.wmflabs.org/hub/enwiki:DIY?site=wikidata)                      | https://www.wikidata.org/wiki/Q26384                                                    |
+| [/DIY?site=wikidata](https://tools.wmflabs.org/hub/DIY?site=wikidata)                             | https://www.wikidata.org/wiki/Q26384                                                    |
+
+#### External Ids
+|  request                                         | redirection                                                                             |
+|:-------------------------------------------------|:----------------------------------------------------------------------------------------|
+| [/P214:24597135](https://tools.wmflabs.org/hub/P214:24597135)                                 | https://en.wikipedia.org/wiki/Isaac_Asimov                                              |
+| [/viaf:24597135](https://tools.wmflabs.org/hub/viaf:24597135)                                 | https://en.wikipedia.org/wiki/Isaac_Asimov                                              |
+| [/twitter:doctorow](https://tools.wmflabs.org/hub/twitter:doctorow)                              | https://en.wikipedia.org/wiki/Cory_Doctorow                                             |
+
+### Destination
+#### Default
+By default, the destination is Wikipedia in the user language, which is guessed from the request `accept-language` header, falling back to English if the language header can't be found or the Wikipedia page doesn't exist in this language.
 
 |  request                                    | redirection                                          |
 |:--------------------------------------------|:-----------------------------------------------------|
 | [/Q184226](https://tools.wmflabs.org/hub/Q184226)                                  | https://en.wikipedia.org/wiki/Gilles_Deleuze         |
 
-### lang
+#### Wikimedia Projects
+###### lang
 
-Pass a `lang` parameter to override the `accept-language` header. Pass several values to set the fallback chain.
+Pass a `lang` parameter (or just `l`) to override the `accept-language` header. Pass several values to set the fallback chain.
 
 |  request                                    | redirection                                          |
 |:--------------------------------------------|:-----------------------------------------------------|
 | [/Q184226?lang=fr](https://tools.wmflabs.org/hub/Q184226?lang=fr)                          | https://fr.wikipedia.org/wiki/Gilles_Deleuze         |
 | [/Q184226?lang=als,oc,fr,en&site=wikiquote](https://tools.wmflabs.org/hub/Q184226?lang=als,oc,fr,en&site=wikiquote) | https://oc.wikipedia.org/wiki/Gilles_Deleuze         |
 
-### site
+###### site
 
-Pass a `site` parameter to redirect to another site than `wikipedia`. Pass several values to set the fallback chain. When combined with a `lang` fallback chain, the site fallback has priority.
+Pass a `site` parameter (or just `s`) to redirect to another site than `wikipedia`. Pass several values to set the fallback chain. When combined with a `lang` fallback chain, the site fallback has priority.
 
 |  request                                                           | redirection                                          |
 |:-------------------------------------------------------------------|:-----------------------------------------------------|
@@ -86,9 +134,38 @@ Pass a `site` parameter to redirect to another site than `wikipedia`. Pass sever
 | [/Q184226?site=wikiquote&lang=fr](https://tools.wmflabs.org/hub/Q184226?site=wikiquote&lang=fr)                                  | https://fr.wikiquote.org/wiki/Gilles_Deleuze         |
 | [/Q184226?site=wikivoyage,wikiquote,wikipedia&lang=als,oc,fr,en](https://tools.wmflabs.org/hub/Q184226?site=wikivoyage,wikiquote,wikipedia&lang=als,oc,fr,en)   | https://fr.wikiquote.org/wiki/Gilles_Deleuze         |
 
-### property
+This can also include sites that can build URLs from Wikidata ids, such as [Scholia](https://tools.wmflabs.org/scholia) and [inventaire.io](https://inventaire.io)
 
-Pass a `property` parameter to generate the redirection URL from the entity claims associated to the desired property. The following examples illustrate the different behaviors depending on the property type:
+|  request                                                           | redirection                                          |
+|:-------------------------------------------------------------------|:-----------------------------------------------------|
+| [/Q184226?site=scholia](https://tools.wmflabs.org/hub/Q184226?site=scholia)                                            | https://tools.wmflabs.org/scholia/Q184226            |
+| [/Q184226?site=inventaire](https://tools.wmflabs.org/hub/Q184226?site=inventaire)                                         | https://inventaire.io/entity/wd:Q184226              |
+
+
+####### sites short names
+
+You can use short versions of those sites names:
+
+| long            | short            |
+|-----------------|:-----------------|
+| `wikidata `     | `wd`             |
+| `wikipedia`     | `wp`             |
+| `commons`       | `c`              |
+| `wikisource`    | `ws`             |
+| `wikiquote`     | `wq`             |
+| `wiktionary`    | `wt`             |
+| `wikivoyage`    | `wv`             |
+| `wikiversity`   | `wy`             |
+| `wikinews`      | `wn`             |
+| `scholia`       | `sc`             |
+| `inventaire`    | `inv`            |
+
+
+Example: [/Q184226?s=wq,wp,inv,wd&l=fr,en,de](https://tools.wmflabs.org/hub/Q184226?s=wq,wp,inv,wd&l=fr,en,de)
+
+#### Following a claim
+
+Pass a `property` parameter (or just `p`) to get the destination from the entity claims associated to the desired property. The following examples illustrate the different behaviors depending on the property type:
 
 |  **request**                                      | **redirection**                                                                                   |
 |---------------------------------------------------|---------------------------------------------------------------------------------------------------|
@@ -116,7 +193,10 @@ Pass a `property` parameter to generate the redirection URL from the entity clai
 
 Not supported: `String`, `Time`, `Monolingualtext`, `Quantity`, `WikibaseProperty`, `Math`
 
-#### properties bundles
+A `w` can be used for short for `width`.
+
+###### properties bundles
+
 Instead of a list of properties, you can use special bundle keys, that behave like a list of properties.
 The `image` and `avatar` bundles are designed to be a cheap way to give an image to an entity:
 ```html
@@ -131,48 +211,8 @@ The `image` and `avatar` bundles are designed to be a cheap way to give an image
 | [/Q604319?property=social](https://tools.wmflabs.org/hub/Q604319?property=social)                       | https://tools.wmflabs.org/wikidata-externalid-url/?p=4033&id=LaQuadrature@mamot.fr                |
 | [/Q624023?property=image,avatar&width=120](https://tools.wmflabs.org/hub/Q624023?property=image,avatar&width=120)       | https://commons.wikimedia.org/wiki/Special:FilePath/EFF_Logo.svg?width=120                        |
 | [/Q604319?property=avatar,image&width=256](https://tools.wmflabs.org/hub/Q604319?property=avatar,image&width=256)       | https://avatars.io/twitter/laquadrature/large                                                     |
+| [/Q241?p=P242&w=1000](https://tools.wmflabs.org/hub/Q241?p=P242&w=1000)                            | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
 
-### aliases
-
-Alternatively to a Wikidata id, you can pass a key built from sitelinks as starting point, defaulting to `enwiki`.
-
-|  request                                         | redirection                                                                             |
-|:-------------------------------------------------|:----------------------------------------------------------------------------------------|
-| [/frwikivoyage:Allemagne](https://tools.wmflabs.org/hub/frwikivoyage:Allemagne)                        | https://en.wikipedia.org/wiki/Germany                                                   |
-| [/eswikinews:Categoría:Alemania](https://tools.wmflabs.org/hub/eswikinews:Categoría:Alemania)                 | https://en.wikipedia.org/wiki/Germany                                                   |
-| [/ocwiki:Alemanha?lang=de](https://tools.wmflabs.org/hub/ocwiki:Alemanha?lang=de)                       | https://de.wikipedia.org/wiki/Deutschland                                               |
-| [/ocwiki:Alemanha?lang=el,fa&site=wikivoyage](https://tools.wmflabs.org/hub/ocwiki:Alemanha?lang=el,fa&site=wikivoyage)    | https://el.wikivoyage.org/wiki/%CE%93%CE%B5%CF%81%CE%BC%CE%B1%CE%BD%CE%AF%CE%B1         |
-| [/enwiki:Edward_Snowden?property=P2002](https://tools.wmflabs.org/hub/enwiki:Edward_Snowden?property=P2002)          | https://twitter.com/Snowden                                                             |
-| [/enwiki:DIY?site=wikidata](https://tools.wmflabs.org/hub/enwiki:DIY?site=wikidata)                      | https://www.wikidata.org/wiki/Q26384                                                    |
-| [/DIY?site=wikidata](https://tools.wmflabs.org/hub/DIY?site=wikidata)                             | https://www.wikidata.org/wiki/Q26384                                                    |
-
-### lazy parameters
-
-| long            | short            |
-|-----------------|:-----------------|
-|                 |                  |
-| **parameters**  |                  |
-| `site`          | `s`              |
-| `lang`          | `l`              |
-| `property`      | `p`              |
-| `width`         | `w`              |
-|                 |                  |
-| **projects**    |                  |
-| `wikidata `     | `wd`             |
-| `wikipedia`     | `wp`             |
-| `commons`       | `c`              |
-| `wikisource`    | `ws`             |
-| `wikiquote`     | `wq`             |
-| `wiktionary`    | `wt`             |
-| `wikivoyage`    | `wv`             |
-| `wikiversity`   | `wy`             |
-| `wikinews`      | `wn`             |
-
-
-|  **request**                                    | **redirection**                                                                                   |
-|-------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| [/Q184226?s=wq,wp,wd&l=fr,en,de](https://tools.wmflabs.org/hub/Q184226?s=wq,wp,wd&l=fr,en,de)                | https://fr.wikiquote.org/wiki/Gilles_Deleuze                                                      |
-| [/Q241?p=P242&w=1000](https://tools.wmflabs.org/hub/Q241?p=P242&w=1000)                           | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
 
 ## Developer Guide
 
@@ -192,3 +232,4 @@ npm run watch
 
 ### Deploy
 see [deploy doc](https://github.com/maxlath/wikidata-hub/blob/master/docs/deploy.md)
+
