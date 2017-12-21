@@ -1,17 +1,8 @@
 require('should')
 const { get, undesiredRes, undesiredErr } = require('./lib/utils')
 
-describe('property', () => {
-  it('should reject invalid properties', done => {
-    get('/Q37033?property=bla')
-    .then(undesiredRes(done))
-    .catch(err => {
-      err.statusCode.should.equal(400)
-      err.body.message.should.equal('invalid property id')
-      done()
-    })
-    .catch(undesiredErr(done))
-  })
+describe('property', function () {
+  this.timeout(10000)
 
   it('should reject unknown properties', done => {
     get('/Q37033?property=P8561241251')
@@ -179,6 +170,15 @@ describe('property', () => {
       .then(res => {
         res.statusCode.should.equal(302)
         res.headers.location.should.equal('https://avatars.io/twitter/UnivLyon1/large')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+    it('should find properties with a matching label', done => {
+      get('/Q34981?property=gutenberg')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://www.gutenberg.org/ebooks/author/35316')
         done()
       })
       .catch(undesiredErr(done))
