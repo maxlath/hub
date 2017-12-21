@@ -146,6 +146,8 @@ Alternatively to a Wikidata id, you can pass a key built from sitelinks as start
 | `wikivoyage`    | `wv`             |
 | `wikiversity`   | `wy`             |
 | `wikinews`      | `wn`             |
+| `scholia`       | `sc`             |
+| `inventaire`    | `inv`            |
 
 
 |  **request**                                    | **redirection**                                                                                   |

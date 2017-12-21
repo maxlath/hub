@@ -131,4 +131,14 @@ describe('sitelinks', () => {
     })
     .catch(undesiredErr(done))
   })
+
+  it('should support sites using Wikidata ids', done => {
+    get('/Q4911143?site=scholia')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://tools.wmflabs.org/scholia/Q4911143')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
 })
