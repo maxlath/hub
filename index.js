@@ -8,7 +8,7 @@ const morgan = require('morgan')
 const app = express()
 app.use(morgan('dev'))
 
-app.get(`${root}/:id/?`, require('./lib/hub'))
+app.get(`${root}/*`, require('./lib/hub'))
 app.get(`${root}/`, require('./lib/hello'))
 
 app.listen(port, err => {
