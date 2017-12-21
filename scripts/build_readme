@@ -1,18 +1,29 @@
 #!/usr/bin/env node
 const fs = require('fs')
+const contentUrl = 'https://raw.githubusercontent.com/maxlath/wikidata-hub/master'
+const hubBase = 'https://tools.wmflabs.org/hub'
 
 var text = `
 <!-- this file is built by ./scripts/build_readme
-Make your edits in docs/README.base.md -->
+Make your edits in docs/readme -->
 
 `
 
-text += fs.readFileSync('./docs/README.base.md')
-  .toString()
-  // Having those links directly  would make way too long lines
-  // to be workable with all those tables
-  .replace(/\`(\/.*)\`/g, '[$1](https://tools.wmflabs.org/hub$1)')
-  .replace(/\(\//g, '(https://tools.wmflabs.org/hub/')
-  .replace(/assets\/images/g, 'https://raw.githubusercontent.com/maxlath/wikidata-hub/master/assets/images')
+
+const addFile = filename => {
+  text += fs.readFileSync(`./docs/readme/${filename}.md`)
+    .toString()
+    // Having those links directly  would make way too long lines
+    // to be workable with all those tables
+    .replace(/\`(\/.*)\`/g, `[$1](${hubBase}$1)`)
+    .replace(/\(\//g, `(${hubBase}/`)
+    .replace(/assets\/images/g, `${contentUrl}/assets/images`)
+
+  text += '\n'
+}
+
+addFile('base')
+addFile('user_guide')
+addFile('developer_guide')
 
 fs.writeFileSync('./README.md', text)
