@@ -8,10 +8,11 @@
     "watch": "supervisor -w index.js,lib,config index.js",
     "postinstall": "./scripts/postinstall",
     "lint": "standard",
+    "test": "mocha",
+    "build": "npm run build-readme && npm run build-home",
     "build-readme": "./scripts/build_readme && doctoc README.md",
     "build-home": "./scripts/build_home",
-    "update-properties": "./scripts/update_properties",
-    "test": "mocha"
+    "update-properties": "./scripts/update_properties"
   },
   "keywords": [
     "wikidata",
