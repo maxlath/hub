@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+cp ./node_modules/github-markdown-css/github-markdown.css public
+
+marked ./README.md > ./assets/html/home.content.html
+
+./scripts/assemble_home_parts > ./public/home.html

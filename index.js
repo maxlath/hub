@@ -8,8 +8,11 @@ const morgan = require('morgan')
 const app = express()
 app.use(morgan('dev'))
 
+const publicFileRoot = process.cwd() + '/public/'
+
+app.use('/public', express.static(publicFileRoot))
+app.get(`${root}/`, require('./lib/home')(publicFileRoot))
 app.get(`${root}/*`, require('./lib/hub'))
-app.get(`${root}/`, require('./lib/hello'))
 
 app.listen(port, err => {
   if (err) logger.error(err, 'startup error')

@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+const fs = require('fs')
+const base = fs.readFileSync('./assets/html/home.base.html').toString()
+const content = fs.readFileSync('./assets/html/home.content.html').toString()
+const html = base.replace('CONTENT', content)
+console.log(html)
