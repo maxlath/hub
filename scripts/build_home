@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+cp ./assets/opensearch.xml ./public/opensearch.xml
 cp ./node_modules/github-markdown-css/github-markdown.css public
 
 marked ./README.md > ./assets/html/home.content.html

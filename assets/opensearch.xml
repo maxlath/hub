@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Hub</ShortName>
+  <LongName>Hub - a web hub based on Wikidata</LongName>
+  <Description>A Web hub: it let's you craft URLs to go from an origin to a destination on the web, at the condition that you provide enough information on those points to be identified within Wikidata. It works primarly around Wikimedia sites, but given the amount Wikidata knows about the web at large, it can get you pretty far! And if you don't where you want to go, that's ok too: this will just bring you to the closest Wikipedia article.</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <Tags>inventory books booksharing opendata wikidata</Tags>
+  <Attribution>Search books from Inventaire, https://inventaire.io/</Attribution>
+  <SyndicationRight>open</SyndicationRight>
+  <Query role="example" searchTerms="A Midsummer Night's Dream"/>
+  <Image height="16" width="16" type="image/vnd.microsoft.icon">https://tools.wmflabs.org/hub/public/images/icon/favicon-16x16.png</Image>
+  <Image height="64" width="64" type="image/png">https://tools.wmflabs.org/hub/public/images/icon/favicon-64x64.png</Image>
+  <Image height="16" width="16" type="image/x-icon">https://tools.wmflabs.org/hub/public/favicon.ico</Image>
+  <Url type="text/html" template="https://tools.wmflabs.org/hub/query?q={searchTerms}"/>
+  <!-- allows automatic update -->
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://tools.wmflabs.org/hub/public/opensearch.xml"/>
+</OpenSearchDescription>

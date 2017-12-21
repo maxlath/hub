@@ -12,6 +12,7 @@ const publicFileRoot = process.cwd() + '/public/'
 
 app.use('/public', express.static(publicFileRoot))
 app.get(`${root}/`, require('./lib/home')(publicFileRoot))
+app.get(`${root}/query`, require('./lib/query'))
 app.get(`${root}/*`, require('./lib/hub'))
 
 app.listen(port, err => {
