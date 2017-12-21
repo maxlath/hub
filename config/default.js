@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'wikidata-hub',
+  name: 'hub',
   port: 2580,
   root: ''
 }

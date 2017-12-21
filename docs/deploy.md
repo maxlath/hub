@@ -16,7 +16,7 @@ Doc: [node.js web services](https://wikitech.wikimedia.org/wiki/Help:Toolforge/W
 ```sh
 mkdir -p ~/www
 cd ~/www
-git clone https://github.com/maxlath/wikidata-hub js
+git clone https://github.com/maxlath/hub js
 cd js
 # Customize root to match the URL passed by Nginx
 echo "module.exports = { root: '/hub' }" > config/local.js

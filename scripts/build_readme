@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const fs = require('fs')
-const contentUrl = 'https://raw.githubusercontent.com/maxlath/wikidata-hub/master'
+const contentUrl = 'https://raw.githubusercontent.com/maxlath/hub/master'
 const hubBase = 'https://tools.wmflabs.org/hub'
 
 var text = `

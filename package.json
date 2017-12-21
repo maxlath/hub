@@ -1,7 +1,7 @@
 {
-  "name": "wikidata-hub",
+  "name": "hub",
   "version": "1.0.0",
-  "description": "a small webservice to handle redirections from a Wikidata id to Wikimedia sites and beyond",
+  "description": "Web hub based on Wikidata",
   "main": "index.js",
   "scripts": {
     "start": "export FORCE_COLOR=true; node index.js",

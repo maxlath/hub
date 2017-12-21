@@ -1,10 +1,10 @@
-# wikidata-hub
+# Hub
 
-A small webservice to handle redirections from a Wikidata id to Wikimedia sites and beyond
+This is a **Web hub**: it let's you craft URLs to go from an **origin** to a **destination** on the web, at the condition that you provide enough information on those points to be identified within [Wikidata](https://wikidata.org). It works primarly around Wikimedia sites, but given the amount Wikidata knows about the web at large, it can get you pretty far! And if you don't where you want to go, that's ok too: this will just bring you to the closest Wikipedia article.
 
 **Target audience**:
 - Wikidata-centered tools developers
-- URL wizards
+- URL craftmen: people who like to browse the web by tweaking URLs
 
 **A few examples to catch your interest**:
 

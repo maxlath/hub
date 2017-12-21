@@ -83,7 +83,7 @@ This can also include sites that can build URLs from Wikidata ids, such as [Scho
 | `/Q184226?site=inventaire`                                         | https://inventaire.io/entity/wd:Q184226              |
 
 
-####### sites short names
+**short site names**
 
 You can use short versions of those sites names:
 
