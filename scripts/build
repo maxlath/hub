@@ -1,14 +1,19 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 set -eu
+mkdir -p public/images
 
 npm run build-readme
 npm run build-home
 
-mkdir -p public/images
-cp {assets,public}/images/favicon-16x16.png
-cp {assets,public}/images/favicon-64x64.png
+# CSS
+cp ./node_modules/github-markdown-css/github-markdown.css public/github-markdown.css
+
+# Images
+cp assets/images/favicon-16x16.png public/images/favicon-16x16.png
+cp assets/images/favicon-64x64.png public/images/favicon-64x64.png
 cp assets/images/favicon.ico public/favicon.ico
 
+# OpenSearch
 cp assets/opensearch.xml public/opensearch.xml
 URL_BASE=$(node -p "require('config').base()")
 echo "URL_BASE: $URL_BASE"
