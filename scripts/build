@@ -8,4 +8,9 @@ mkdir -p public/images
 cp {assets,public}/images/favicon-16x16.png
 cp {assets,public}/images/favicon-64x64.png
 cp assets/images/favicon.ico public/favicon.ico
+
 cp assets/opensearch.xml public/opensearch.xml
+URL_BASE=$(node -p "require('config').base()")
+echo "URL_BASE: $URL_BASE"
+# Using '@' as expressions separator
+sed -i "s@URL_BASE@${URL_BASE}@" public/opensearch.xml

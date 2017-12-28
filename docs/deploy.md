@@ -18,8 +18,13 @@ mkdir -p ~/www
 cd ~/www
 git clone https://github.com/maxlath/hub js
 cd js
-# Customize root to match the URL passed by Nginx
-echo "module.exports = { root: '/hub' }" > config/local.js
+
+echo "module.exports = {
+  host: 'https://tools.wmflabs.org',
+  // Customize root to match the URL passed by Nginx
+  root: '/hub'
+}" > config/local.js
+
 # Running npm with webservice shell to get more recent node/npm versions
 webservice --backend=kubernetes nodejs shell
 npm install --production
