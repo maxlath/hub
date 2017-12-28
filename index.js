@@ -10,6 +10,9 @@ app.use(morgan('dev'))
 
 const publicFileRoot = process.cwd() + '/public/'
 
+const favicon = require('serve-favicon')(publicFileRoot + 'favicon.ico')
+app.use(favicon)
+
 app.use('/public', express.static(publicFileRoot))
 app.get(`${root}/`, require('./lib/home')(publicFileRoot))
 app.get(`${root}/query`, require('./lib/query'))
