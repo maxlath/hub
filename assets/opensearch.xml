@@ -9,8 +9,8 @@
   <Attribution>Search books from Inventaire, https://inventaire.io/</Attribution>
   <SyndicationRight>open</SyndicationRight>
   <Query role="example" searchTerms="A Midsummer Night's Dream"/>
-  <Image height="16" width="16" type="image/vnd.microsoft.icon">https://tools.wmflabs.org/hub/public/images/icon/favicon-16x16.png</Image>
-  <Image height="64" width="64" type="image/png">https://tools.wmflabs.org/hub/public/images/icon/favicon-64x64.png</Image>
+  <Image height="16" width="16" type="image/vnd.microsoft.icon">https://tools.wmflabs.org/hub/public/images/favicon-16x16.png</Image>
+  <Image height="64" width="64" type="image/png">https://tools.wmflabs.org/hub/public/images/favicon-64x64.png</Image>
   <Image height="16" width="16" type="image/x-icon">https://tools.wmflabs.org/hub/public/favicon.ico</Image>
   <Url type="text/html" template="https://tools.wmflabs.org/hub/query?q={searchTerms}"/>
   <!-- allows automatic update -->

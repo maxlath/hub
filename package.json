@@ -9,7 +9,7 @@
     "postinstall": "./scripts/postinstall",
     "lint": "standard",
     "test": "mocha",
-    "build": "npm run build-readme && npm run build-home",
+    "build": "./scripts/build",
     "build-readme": "./scripts/build_readme && doctoc README.md",
     "build-home": "./scripts/build_home",
     "update-properties": "./scripts/update_properties"

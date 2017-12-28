@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+set -eu
+
+npm run build-readme
+npm run build-home
+
+mkdir -p public/images
+cp {assets,public}/images/favicon-16x16.png
+cp {assets,public}/images/favicon-64x64.png
+cp assets/images/favicon.ico public/favicon.ico
+cp assets/opensearch.xml public/opensearch.xml
