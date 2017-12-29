@@ -75,6 +75,16 @@ describe('aliases', function () {
       .catch(undesiredErr(done))
     })
 
+    it('should fallback on the first search result when no entity can be found from sitelinks', done => {
+      get('/la mulatière', 'fr')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://fr.wikipedia.org/wiki/La_Mulati%C3%A8re')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+
     it('should default to wiki sitelink project', done => {
       get('/fr:COURLY')
       .then(res => {
