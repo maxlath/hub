@@ -56,20 +56,20 @@ describe('aliases', function () {
     })
 
     it('should default to enwiki sitelink key', done => {
-      get('/DIY')
+      get('/Edward_Snowden')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://en.wikipedia.org/wiki/Do_it_yourself')
+        res.headers.location.should.equal('https://en.wikipedia.org/wiki/Edward_Snowden')
         done()
       })
       .catch(undesiredErr(done))
     })
 
-    it('should default to enwiki sitelink key (2)', done => {
-      get('/Edward_Snowden')
+    it('should default to the wiki in the user language', done => {
+      get('/velo', 'fr')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://en.wikipedia.org/wiki/Edward_Snowden')
+        res.headers.location.should.equal('https://fr.wikipedia.org/wiki/Bicyclette')
         done()
       })
       .catch(undesiredErr(done))
