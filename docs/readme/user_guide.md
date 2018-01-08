@@ -75,13 +75,15 @@ Pass a `site` parameter (or just `s`) to redirect to another site than `wikipedi
 | `/Q184226?site=wikiquote&lang=fr`                                  | https://fr.wikiquote.org/wiki/Gilles_Deleuze         |
 | `/Q184226?site=wikivoyage,wikiquote,wikipedia&lang=als,oc,fr,en`   | https://fr.wikiquote.org/wiki/Gilles_Deleuze         |
 
-This can also include sites that can build URLs from Wikidata ids, such as [Scholia](https://tools.wmflabs.org/scholia) and [inventaire.io](https://inventaire.io)
+This can also include sites that can build URLs from Wikidata ids:
 
 |  request                                                           | redirection                                          |
 |:-------------------------------------------------------------------|:-----------------------------------------------------|
-| `/Q184226?site=scholia`                                            | https://tools.wmflabs.org/scholia/Q184226            |
+| `/Q184226?site=crotos`                                             | http://zone47.com/crotos/?q=Q23936146                |
 | `/Q184226?site=inventaire`                                         | https://inventaire.io/entity/wd:Q184226              |
-
+| `/Q184226?site=reasonator`                                         | https://tools.wmflabs.org/reasonator/?q=Q184226      |
+| `/Q184226?site=scholia`                                            | https://tools.wmflabs.org/scholia/Q184226            |
+| `/Q184226?site=skid`                                               | https://tools.wmflabs.org//sqid/#/view?id=Q184226    |
 
 **short site names**
 
