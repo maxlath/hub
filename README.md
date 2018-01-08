@@ -4,7 +4,7 @@ Make your edits in docs/readme -->
 
 # Hub
 
-This is a **Web hub**: it let's you craft URLs to go from an **origin** to a **destination** on the web, at the condition that you provide enough information on those points to be identified within [Wikidata](https://wikidata.org). It works primarly around Wikimedia sites, but given the amount Wikidata knows about the web at large, it can get you pretty far! And if you don't where you want to go, that's ok too: this will just bring you to the closest Wikipedia article.
+This is a **Web hub**: it let's you craft URLs to go from an **origin** to a **destination** on the web, at the condition that you provide enough information on those points to be identified within [Wikidata](https://wikidata.org). It works primarly around Wikimedia sites, but given the amount Wikidata knows about the web at large, it can get you pretty far! And if you don't know where you want to go, that's ok too: this will just bring you to the closest Wikipedia article.
 
 **Target audience**:
 - Wikidata-centered tools developers
@@ -50,6 +50,9 @@ for your next prototype, illustrate your concepts the lazy way:
         - [site](#site)
     - [Following a claim](#following-a-claim)
         - [properties bundles](#properties-bundles)
+  - [Query the Hub as a search engine](#query-the-hub-as-a-search-engine)
+    - [Firefox](#firefox)
+    - [Chrome](#chrome)
 - [Developer Guide](#developer-guide)
   - [Dependencies](#dependencies)
   - [Install](#install)
@@ -212,6 +215,36 @@ The `image` and `avatar` bundles are designed to be a cheap way to give an image
 | [/Q624023?property=image,avatar&width=120](https://tools.wmflabs.org/hub/Q624023?property=image,avatar&width=120)       | https://commons.wikimedia.org/wiki/Special:FilePath/EFF_Logo.svg?width=120                        |
 | [/Q604319?property=avatar,image&width=256](https://tools.wmflabs.org/hub/Q604319?property=avatar,image&width=256)       | https://avatars.io/twitter/laquadrature/large                                                     |
 | [/Q241?p=P242&w=1000](https://tools.wmflabs.org/hub/Q241?p=P242&w=1000)                            | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
+
+### Query the Hub as a search engine
+Building Hub URLs from the URL bar requires a few steps:
+- go to your browser URL bar (shortcut: `Ctrl+L` or `Alt+D`)
+- enter some keys to make your history suggest on of your previous `https://tools.wmflabs.org/hub/` URLs
+- edit the URL as you please
+
+But we could be even more lazy by adding Hub as a search engine to your browser (see tutorials hereafter for [firefox](#firefox) and [chrome](#chrome)). The steps can now be as follow (assuming you set `hub` as search engine keyword):
+- go to your browser URL bar (shortcut: `Ctrl+L` or `Alt+D`)
+- enter the URL elements as you would do if you where editing the `https://tools.wmflabs.org/hub/` URL, separating elements with spaces `hub Q1 l=fr`
+
+#### Firefox
+- Follow this tutorial to add Inventaire to your search engines list: [Add a search engine](https://support.mozilla.org/en-US/kb/add-or-remove-search-engine-firefox#w_add-a-search-engine)
+- In [about:preferences#search](about:preferences#search), on the Hub search engine line:
+   -  double click the **keyword** column to edit it
+   -  enter a keyword (we will hereafter assume that you set it to `hub`)
+- Try it:
+  -  go to your browser address bar (shortcut: `Ctrl+L` or `Alt+D`)
+  -  type `hub Q1 l=fr`, that should bring you to https://fr.wikipedia.org/wiki/Univers
+
+#### Chrome
+- go to [chrome://settings/searchEngines](chrome://settings/searchEngines)
+- in the **Other search engines** section, click **Add**, and fill as follow:
+  - **Search Engine**: Hub
+  - **Keyword**: hub
+  - **URL with %s instead of the request**: https://tools.wmflabs.org/hub/query?q=%s
+- Try it:
+  -  go to your browser address bar (shortcut: `Ctrl+L`)
+  -  type `hub`, press `Tab`: the address bar should now display `Search on Hub`
+  -  you can now type your query, and press `Enter` (ex: `Q1 l=fr` will bring you to https://fr.wikipedia.org/wiki/Univers)
 
 
 ## Developer Guide
