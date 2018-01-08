@@ -159,12 +159,12 @@ The `image` and `avatar` bundles are designed to be a cheap way to give an image
 ### Query the Hub as a search engine
 Building Hub URLs from the URL bar requires a few steps:
 - go to your browser URL bar (shortcut: `Ctrl+L` or `Alt+D`)
-- enter some keys to make your history suggest on of your previous `https://tools.wmflabs.org/hub/` URLs
-- edit the URL as you please
+- enter some keys to make your history suggest one of your previous `https://tools.wmflabs.org/hub/` URLs
+- edit the URL as you please. Example: https://tools.wmflabs.org/hub/Q1?l=fr
 
 But we could be even more lazy by adding Hub as a search engine to your browser (see tutorials hereafter for [firefox](#firefox) and [chrome](#chrome)). The steps can now be as follow (assuming you set `hub` as search engine keyword):
 - go to your browser URL bar (shortcut: `Ctrl+L` or `Alt+D`)
-- enter the URL elements as you would do if you where editing the `https://tools.wmflabs.org/hub/` URL, separating elements with spaces `hub Q1 l=fr`
+- enter the URL elements as you would do if you where editing the `https://tools.wmflabs.org/hub/` URL, separating elements with spaces. Example: `hub Q1 l=fr`
 
 #### Firefox
 - Follow this tutorial to add Inventaire to your search engines list: [Add a search engine](https://support.mozilla.org/en-US/kb/add-or-remove-search-engine-firefox#w_add-a-search-engine)
