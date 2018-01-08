@@ -1,7 +1,9 @@
 require('should')
 const { get, undesiredErr } = require('./lib/utils')
 
-describe('sitelinks', () => {
+describe('sitelinks', function () {
+  this.timeout(10000)
+
   it('should redirect to the English Wikipedia by default', done => {
     get('/Q184226')
     .then(res => {
