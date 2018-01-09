@@ -141,7 +141,7 @@ This can also include sites that can build URLs from Wikidata ids:
 
 |  request                                                           | redirection                                          |
 |:-------------------------------------------------------------------|:-----------------------------------------------------|
-| [/Q184226?site=crotos](https://tools.wmflabs.org/hub/Q184226?site=crotos)                                             | http://zone47.com/crotos/?q=Q23936146                |
+| [/Q23936146?site=crotos](https://tools.wmflabs.org/hub/Q23936146?site=crotos)                                           | http://zone47.com/crotos/?q=Q23936146                |
 | [/Q184226?site=inventaire](https://tools.wmflabs.org/hub/Q184226?site=inventaire)                                         | https://inventaire.io/entity/wd:Q184226              |
 | [/Q184226?site=reasonator](https://tools.wmflabs.org/hub/Q184226?site=reasonator)                                         | https://tools.wmflabs.org/reasonator/?q=Q184226      |
 | [/Q184226?site=scholia](https://tools.wmflabs.org/hub/Q184226?site=scholia)                                            | https://tools.wmflabs.org/scholia/Q184226            |
