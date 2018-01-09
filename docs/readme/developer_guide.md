@@ -18,3 +18,10 @@ npm run watch
 
 ### Deploy
 The step followed to setup this tool on tools.wmflabs.org are documented here: [deploy](https://github.com/maxlath/hub/blob/master/docs/deploy.md)
+
+### See also
+
+* This tool is based on the [wikidata-sdk](https://github.com/maxlath/wikidata-sdk) JavaScript library
+* Wikidata can be [queried by SPARQL](http://query.wikidata.org/)
+* All Wikimedia wikis, e.g. Wikipedia, can be [queried by MediaWiki API](https://en.wikipedia.org/w/api.php)
+
