@@ -100,9 +100,10 @@ You can use short versions of those sites names:
 | `wikivoyage`    | `wv`             |
 | `wikiversity`   | `wy`             |
 | `wikinews`      | `wn`             |
-| `scholia`       | `sc`             |
 | `inventaire`    | `inv`            |
-
+| `reasonator`    | `re`             |
+| `scholia`       | `sc`             |
+| `sqid`          | `sq`             |
 
 Example: `/Q184226?s=wq,wp,inv,wd&l=fr,en,de`
 
