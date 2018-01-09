@@ -83,7 +83,7 @@ This can also include sites that can build URLs from Wikidata ids:
 | `/Q184226?site=inventaire`                                         | https://inventaire.io/entity/wd:Q184226              |
 | `/Q184226?site=reasonator`                                         | https://tools.wmflabs.org/reasonator/?q=Q184226      |
 | `/Q184226?site=scholia`                                            | https://tools.wmflabs.org/scholia/Q184226            |
-| `/Q184226?site=skid`                                               | https://tools.wmflabs.org//sqid/#/view?id=Q184226    |
+| `/Q184226?site=sqid`                                               | https://tools.wmflabs.org//sqid/#/view?id=Q184226    |
 
 **short site names**
 
