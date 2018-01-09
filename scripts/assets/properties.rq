@@ -1,4 +1,4 @@
-SELECT ?property ?label ?type ?urlFormat
+SELECT ?property ?label ?type ?urlFormat (GROUP_CONCAT(?alias;separator='\n') AS ?aliases)
 WHERE {
   ?property a wikibase:Property .
   ?property wikibase:propertyType ?propertyType .
@@ -8,5 +8,10 @@ WHERE {
   # and not { value, label }
   ?property rdfs:label ?label .
   FILTER((LANG(?label)) = "en")
+  OPTIONAL {
+    ?property skos:altLabel ?alias .
+    FILTER((LANG(?alias)) = "en")
+  }
 }
+GROUP BY ?property ?label ?type ?urlFormat
 ORDER BY ASC(xsd:integer(STRAFTER(STR(?property), 'P')))
