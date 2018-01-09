@@ -127,11 +127,21 @@ describe('aliases', function () {
       .catch(undesiredErr(done))
     })
 
-    it('should guess possible properties from a string key', done => {
+    it('should guess possible properties from a string key matching properties labels', done => {
       get('/twitter:EFF?s=wd')
       .then(res => {
         res.statusCode.should.equal(302)
         res.headers.location.should.equal('https://www.wikidata.org/wiki/Q624023')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+
+    it('should guess possible properties from a string key matching properties aliases', done => {
+      get('/hdl:10462/eadarc/7154?s=wd')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q15664389')
         done()
       })
       .catch(undesiredErr(done))
