@@ -7,4 +7,7 @@ wd sparql ./scripts/assets/properties.rq --index property >> ./lib/properties.js
 
 # If standard is installed, fix possible indentation inconsistencies
 # to avoid having standard report them later
-which standard && standard --fix ./lib/properties.js || echo 'not linting'
+
+  standard --fix ./lib/properties.js || echo 'not linting'
+
+./scripts/generate_properties_index

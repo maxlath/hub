@@ -1,6 +1,7 @@
 package-lock.json
 node_modules
 lib/properties.js
+lib/properties_index.js
 public
 home.content.html
 
