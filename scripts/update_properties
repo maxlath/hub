@@ -10,4 +10,8 @@ wd sparql ./scripts/assets/properties.rq --index property >> ./lib/properties.js
 
   standard --fix ./lib/properties.js || echo 'not linting'
 
+echo "generating properties index"
 ./scripts/generate_properties_index
+
+echo "copying the index in the public folder to make it publicly accessible"
+cp ./lib/properties_index.js ./public/properties_index.js
