@@ -41,4 +41,14 @@ describe('query', () => {
     })
     .catch(undesiredErr(done))
   })
+
+  it('should redirect empty query to the query documentation', done => {
+    get('/query')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('/?#query-the-hub-as-a-search-engine')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
 })
