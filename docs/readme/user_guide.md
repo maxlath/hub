@@ -172,7 +172,7 @@ But we could be even more lazy by adding Hub as a search engine to your browser 
 - enter the URL elements as you would do if you where editing the `https://tools.wmflabs.org/hub/` URL, separating elements with spaces. Example: `hub Q1 l=fr`
 
 #### Firefox
-- Follow this tutorial to add Inventaire to your search engines list: [Add a search engine](https://support.mozilla.org/en-US/kb/add-or-remove-search-engine-firefox#w_add-a-search-engine)
+- Follow this tutorial to add the Hub to your search engines list: [Add a search engine](https://support.mozilla.org/en-US/kb/add-or-remove-search-engine-firefox#w_add-a-search-engine)
 - In [about:preferences#search](about:preferences#search), on the Hub search engine line:
    -  double click the **keyword** column to edit it
    -  enter a keyword (we will hereafter assume that you set it to `hub`)

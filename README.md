@@ -58,6 +58,7 @@ for your next prototype, illustrate your concepts the lazy way:
   - [Dependencies](#dependencies)
   - [Install](#install)
   - [Deploy](#deploy)
+  - [See also](#see-also)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -235,7 +236,7 @@ But we could be even more lazy by adding Hub as a search engine to your browser 
 - enter the URL elements as you would do if you where editing the `https://tools.wmflabs.org/hub/` URL, separating elements with spaces. Example: `hub Q1 l=fr`
 
 #### Firefox
-- Follow this tutorial to add <https://tools.wmflabs.org/hub> to your search engines list: [Add a search engine](https://support.mozilla.org/en-US/kb/add-or-remove-search-engine-firefox#w_add-a-search-engine)
+- Follow this tutorial to add the Hub to your search engines list: [Add a search engine](https://support.mozilla.org/en-US/kb/add-or-remove-search-engine-firefox#w_add-a-search-engine)
 - In [about:preferences#search](about:preferences#search), on the Hub search engine line:
    -  double click the **keyword** column to edit it
    -  enter a keyword (we will hereafter assume that you set it to `hub`)
@@ -274,4 +275,10 @@ npm run watch
 
 ### Deploy
 The step followed to setup this tool on tools.wmflabs.org are documented here: [deploy](https://github.com/maxlath/hub/blob/master/docs/deploy.md)
+
+### See also
+
+* This tool is based on the [wikidata-sdk](https://github.com/maxlath/wikidata-sdk) JavaScript library
+* Wikidata can be [queried by SPARQL](http://query.wikidata.org/)
+* All Wikimedia wikis, e.g. Wikipedia, can be [queried by MediaWiki API](https://en.wikipedia.org/w/api.php)
 
