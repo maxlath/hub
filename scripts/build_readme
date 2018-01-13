@@ -15,7 +15,7 @@ const addFile = filename => {
     .toString()
     // Having those links directly  would make way too long lines
     // to be workable with all those tables
-    .replace(/\`(\/.*)\`/g, `[$1](${hubBase}$1)`)
+    .replace(/\`(\/[^`]*)\`/g, `[$1](${hubBase}$1)`)
     .replace(/\(\//g, `(${hubBase}/`)
     .replace(/assets\/images/g, `${contentUrl}/assets/images`)
 
