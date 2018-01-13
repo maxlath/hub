@@ -157,6 +157,10 @@ The `image` and `avatar` bundles are designed to be a cheap way to give an image
 | `/Q604319?property=avatar,image&width=256`       | https://avatars.io/twitter/laquadrature/large                                                     |
 | `/Q241?p=P242&w=1000`                            | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
 
+### JSON
+You can get a JSON response (status code `200`) instead of a redirection (status code `302`) by adding the query parameter `format=json`. Ex: `/Q184226?lang=fr&format=json`
+This can be useful for debugging, or to use the internal resolver as a JSON API.
+
 ### Query the Hub as a search engine
 Building Hub URLs from the URL bar requires a few steps:
 - go to your browser URL bar (shortcut: `Ctrl+L` or `Alt+D`)

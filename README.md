@@ -50,6 +50,7 @@ for your next prototype, illustrate your concepts the lazy way:
         - [site](#site)
     - [Following a claim](#following-a-claim)
         - [properties bundles](#properties-bundles)
+  - [JSON](#json)
   - [Query the Hub as a search engine](#query-the-hub-as-a-search-engine)
     - [Firefox](#firefox)
     - [Chrome](#chrome)
@@ -218,6 +219,10 @@ The `image` and `avatar` bundles are designed to be a cheap way to give an image
 | [/Q624023?property=image,avatar&width=120](https://tools.wmflabs.org/hub/Q624023?property=image,avatar&width=120)       | https://commons.wikimedia.org/wiki/Special:FilePath/EFF_Logo.svg?width=120                        |
 | [/Q604319?property=avatar,image&width=256](https://tools.wmflabs.org/hub/Q604319?property=avatar,image&width=256)       | https://avatars.io/twitter/laquadrature/large                                                     |
 | [/Q241?p=P242&w=1000](https://tools.wmflabs.org/hub/Q241?p=P242&w=1000)                            | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
+
+### JSON
+You can get a JSON response (status code `200`) instead of a redirection (status code `302`) by adding the query parameter `format=json`. Ex: [/Q184226?lang=fr&format=json](https://tools.wmflabs.org/hub/Q184226?lang=fr&format=json)
+This can be useful for debugging, or to use the internal resolver as a JSON API.
 
 ### Query the Hub as a search engine
 Building Hub URLs from the URL bar requires a few steps:

@@ -29,6 +29,7 @@
     "express": "^4.16.2",
     "github-markdown-css": "^2.9.0",
     "inv-loggers": "^3.3.1",
+    "lodash.pick": "^4.4.0",
     "lodash.values": "^4.3.0",
     "morgan": "^1.1.1",
     "serve-favicon": "^2.4.5",
