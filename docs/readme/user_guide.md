@@ -161,6 +161,11 @@ The `image` and `avatar` bundles are designed to be a cheap way to give an image
 You can get a JSON response (status code `200`) instead of a redirection (status code `302`) by adding the query parameter `format=json`. Ex: `/Q184226?lang=fr&format=json`
 This can be useful for debugging, or to use the internal resolver as a JSON API.
 
+|  **request**                                     | **response**                                     |
+|--------------------------------------------------|--------------------------------------------------|
+| Ex: `/Q184226?lang=fr&format=json`               | `{ origin: [Object], destination: [Object] }`    |
+| Ex: `/Q184226?l=fr&f=j`                          | `{ origin: [Object], destination: [Object] }`    |
+
 ### Query the Hub as a search engine
 Building Hub URLs from the URL bar requires a few steps:
 - go to your browser URL bar (shortcut: `Ctrl+L` or `Alt+D`)
