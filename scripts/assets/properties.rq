@@ -1,4 +1,4 @@
-SELECT ?property ?label ?type ?urlFormat (GROUP_CONCAT(?alias;separator='\n') AS ?aliases)
+SELECT ?property ?label ?type ?urlFormat ?authority (GROUP_CONCAT(?alias;separator='\n') AS ?aliases)
 WHERE {
   ?property a wikibase:Property .
   ?property wikibase:propertyType ?propertyType .
@@ -12,6 +12,10 @@ WHERE {
     ?property skos:altLabel ?alias .
     FILTER((LANG(?alias)) = "en")
   }
+  OPTIONAL {
+    ?property wdt:P31/wdt:P279* wd:Q18614948 .
+    BIND (TRUE AS ?authority)
+  }
 }
-GROUP BY ?property ?label ?type ?urlFormat
+GROUP BY ?property ?label ?type ?urlFormat ?authority
 ORDER BY ASC(xsd:integer(STRAFTER(STR(?property), 'P')))
