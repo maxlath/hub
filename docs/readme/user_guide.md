@@ -81,6 +81,7 @@ This can also include sites that can build URLs from Wikidata ids:
 |:-------------------------------------------------------------------|:-----------------------------------------------------|
 | `/Q23936146?site=crotos`                                           | http://zone47.com/crotos/?q=Q23936146                |
 | `/Q184226?site=inventaire`                                         | https://inventaire.io/entity/wd:Q184226              |
+| `/Q184226?site=portal`                                             | https://tools.wmflabs.org/portal/Q184226             |
 | `/Q184226?site=reasonator`                                         | https://tools.wmflabs.org/reasonator/?q=Q184226      |
 | `/Q184226?site=scholia`                                            | https://tools.wmflabs.org/scholia/Q184226            |
 | `/Q184226?site=sqid`                                               | https://tools.wmflabs.org//sqid/#/view?id=Q184226    |
@@ -101,6 +102,7 @@ You can use short versions of those sites names:
 | `wikiversity`   | `wy`             |
 | `wikinews`      | `wn`             |
 | `inventaire`    | `inv`            |
+| `portal`        | `po`             |
 | `reasonator`    | `re`             |
 | `scholia`       | `sc`             |
 | `sqid`          | `sq`             |
