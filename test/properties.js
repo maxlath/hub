@@ -134,10 +134,10 @@ describe('property', function () {
 
   describe('GlobeCoordinate', () => {
     it('should support properties of type GlobeCoordinate', done => {
-      get('/Q25373?property=P625')
+      get('/Q456?property=P625')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.openstreetmap.org/?mlat=35.2542&mlon=-24.2585')
+        res.headers.location.should.equal('https://www.openstreetmap.org/?mlat=45.758888888889&mlon=4.8413888888889')
         done()
       })
       .catch(undesiredErr(done))
