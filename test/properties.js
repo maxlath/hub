@@ -36,6 +36,26 @@ describe('property', function () {
     .catch(undesiredErr(done))
   })
 
+  it('should accept properties a numeric id', done => {
+    get('/Q100?p=18')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Boston_Collage_4.png')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
+  it('should accept properties numeric ids', done => {
+    get('/Q100?p=4840,18,94,242')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Boston_Collage_4.png')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
   it('should fallback', done => {
     get('/Q241?property=P18,P242,P94,P2002')
     .then(res => {
