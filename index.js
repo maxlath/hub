@@ -22,3 +22,5 @@ app.listen(port, err => {
   if (err) logger.error(err, 'startup error')
   else logger.info(`${name} started on port ${port}`)
 })
+
+require('./lib/refresh_properties_once_a_day')()
