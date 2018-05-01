@@ -146,6 +146,8 @@ This can also include sites that can build URLs from Wikidata ids:
 |:-------------------------------------------------------------------|:-----------------------------------------------------|
 | [/Q23936146?site=crotos](https://tools.wmflabs.org/hub/Q23936146?site=crotos)                                           | http://zone47.com/crotos/?q=Q23936146                |
 | [/Q184226?site=inventaire](https://tools.wmflabs.org/hub/Q184226?site=inventaire)                                         | https://inventaire.io/entity/wd:Q184226              |
+| [/Q638519?site=monumental](https://tools.wmflabs.org/hub/Q638519?site=monumental)                                         | https://tools.wmflabs.org/monumental/#/object/Q638519|
+| [/Q184226?site=portal](https://tools.wmflabs.org/hub/Q184226?site=portal)                                             | https://tools.wmflabs.org/portal/Q184226             |
 | [/Q184226?site=reasonator](https://tools.wmflabs.org/hub/Q184226?site=reasonator)                                         | https://tools.wmflabs.org/reasonator/?q=Q184226      |
 | [/Q184226?site=scholia](https://tools.wmflabs.org/hub/Q184226?site=scholia)                                            | https://tools.wmflabs.org/scholia/Q184226            |
 | [/Q184226?site=sqid](https://tools.wmflabs.org/hub/Q184226?site=sqid)                                               | https://tools.wmflabs.org//sqid/#/view?id=Q184226    |
@@ -166,6 +168,7 @@ You can use short versions of those sites names:
 | `wikiversity`   | `wy`             |
 | `wikinews`      | `wn`             |
 | `inventaire`    | `inv`            |
+| `portal`        | `po`             |
 | `reasonator`    | `re`             |
 | `scholia`       | `sc`             |
 | `sqid`          | `sq`             |
@@ -226,10 +229,10 @@ The `image` and `avatar` bundles are designed to be a cheap way to give an image
 You can get a JSON response (status code `200`) instead of a redirection (status code `302`) by adding the query parameter `format=json`. Ex: [/Q184226?lang=fr&format=json](https://tools.wmflabs.org/hub/Q184226?lang=fr&format=json)
 This can be useful for debugging, or to use the internal resolver as a JSON API.
 
-|  **request**                                     | **response**                                     |
-|--------------------------------------------------|--------------------------------------------------|
-| [/Q184226?lang=fr&format=json](https://tools.wmflabs.org/hub/Q184226?lang=fr&format=json)               | `{ origin: [Object], destination: [Object] }`    |
-| [/Q184226?l=fr&f=j](https://tools.wmflabs.org/hub/Q184226?l=fr&f=j)                          | `{ origin: [Object], destination: [Object] }`    |
+|  **request**                           | **response**                                     |
+|----------------------------------------|--------------------------------------------------|
+| [/Q184226?lang=fr&format=json](https://tools.wmflabs.org/hub/Q184226?lang=fr&format=json)         | `{ origin: [Object], destination: [Object] }`    |
+| [/Q184226?l=fr&f=j](https://tools.wmflabs.org/hub/Q184226?l=fr&f=j)                    | `{ origin: [Object], destination: [Object] }`    |
 
 ### Query the Hub as a search engine
 Building Hub URLs from the URL bar requires a few steps:
@@ -287,4 +290,7 @@ The step followed to setup this tool on tools.wmflabs.org are documented here: [
 * This tool is based on the [wikidata-sdk](https://github.com/maxlath/wikidata-sdk) JavaScript library
 * Wikidata can be [queried by SPARQL](http://query.wikidata.org/)
 * All Wikimedia wikis, e.g. Wikipedia, can be [queried by MediaWiki API](https://en.wikipedia.org/w/api.php)
+
+## License
+[AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.en.html)
 
