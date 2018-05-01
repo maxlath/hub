@@ -59,6 +59,7 @@ for your next prototype, illustrate your concepts the lazy way:
   - [Install](#install)
   - [Deploy](#deploy)
   - [See also](#see-also)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

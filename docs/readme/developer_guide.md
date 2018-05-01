@@ -24,3 +24,6 @@ The step followed to setup this tool on tools.wmflabs.org are documented here: [
 * This tool is based on the [wikidata-sdk](https://github.com/maxlath/wikidata-sdk) JavaScript library
 * Wikidata can be [queried by SPARQL](http://query.wikidata.org/)
 * All Wikimedia wikis, e.g. Wikipedia, can be [queried by MediaWiki API](https://en.wikipedia.org/w/api.php)
+
+## License
+[AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.en.html)

@@ -21,7 +21,7 @@
     "images"
   ],
   "author": "maxlath",
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "dependencies": {
     "bluereq": "^2.1.5",
     "chalk": "^2.3.0",
