@@ -271,11 +271,11 @@ But we could be even more lazy by adding Hub as a search engine to your browser 
 * Source code: https://github.com/maxlath/hub
 
 ### Dependencies
-* [NodeJS](https://nodejs.org) `>v6.4.0` (recommanded way to install: [NVM](https://github.com/creationix/nvm))
+* [NodeJS](https://nodejs.org) `>v6.4.0` (recommended way to install: [NVM](https://github.com/creationix/nvm))
 
 ### Install
 ```sh
-git clone github.com/maxlath/hub
+git clone https://github.com/maxlath/hub
 cd hub
 npm install
 # Starts the server on port 2580 and watch for files changes to restart
