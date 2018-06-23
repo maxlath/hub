@@ -66,6 +66,16 @@ describe('property', function () {
     .catch(undesiredErr(done))
   })
 
+  it('should follow multiple properties', done => {
+    get('/P3217:8143?property=P19>P5324')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.location.should.equal('https://sok.riksarkivet.se/?postid=ArkisRef%20SE/SSA/6009')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
   it('should support properties', done => {
     get('/P610?p=P1855')
     .then(res => {
