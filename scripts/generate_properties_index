@@ -41,7 +41,8 @@ const indexWord = (property, word) => {
 }
 
 for (let property in properties) {
-  if (properties[property].type === 'ExternalId') {
+  const { type, authority } = properties[property]
+  if (type === 'ExternalId' || (type === 'String' && authority)) {
     indexPropertyByLabel(property)
     indexPropertyByAliases(property)
   }
