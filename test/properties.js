@@ -226,5 +226,24 @@ describe('property', function () {
       })
       .catch(undesiredErr(done))
     })
+
+    it('should reject property values not found', done => {
+      get('/Q78491?property=P26|P3966|P131')
+      .then(undesiredRes(done))
+      .catch(err => {
+        err.statusCode.should.equal(404)
+        done()
+      })
+    })
+
+    it('should reject non-graph non-final properties', done => {
+      get('/Q40463886?property=P3984|P31')
+      .then(undesiredRes(done))
+      .catch(err => {
+        err.statusCode.should.equal(400)
+        err.body.message.should.equal('invalid property chain')
+        done()
+      })
+    })
   })
 })
