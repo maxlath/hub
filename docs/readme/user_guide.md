@@ -162,7 +162,7 @@ The `image` and `avatar` bundles are designed to be a cheap way to give an image
 
 ###### multiple properties
 
-Did you ever wish to link to Stephan Zweig's (Q78491) spouse's (P26) place of death (P20) administrative territory (P131) time zone (P421) image (P18) ? Now you can:
+Did you ever wish to link to Stephan Zweig's (Q78491) spouse's (P26) place of death (P20) administrative territory (P131) time zone (P421) image (P18)? Now you can:
 
 |  **request**                                     | **redirection**                                                                                   |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------|
