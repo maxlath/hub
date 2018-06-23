@@ -68,7 +68,7 @@ describe('property', function () {
 
   it('should follow 2 properties', done => {
     // Example from https://twitter.com/salgo60/status/1010471186164277248
-    get('/P3217:8143?property=P19>P5324')
+    get('/P3217:8143?property=P19|P5324')
     .then(res => {
       res.statusCode.should.equal(302)
       res.headers.location.should.equal('https://sok.riksarkivet.se/?postid=ArkisRef%20SE/SSA/6009')
@@ -78,7 +78,7 @@ describe('property', function () {
   })
 
   it('should follow several properties', done => {
-    get('/Q78491?property=P26>P20>P131>P421>P18')
+    get('/Q78491?property=P26|P20|P131|P421|P18')
     .then(res => {
       res.statusCode.should.equal(302)
       res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Timezones2008_UTC-5_gray.png')
