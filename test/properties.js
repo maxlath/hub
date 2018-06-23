@@ -40,7 +40,7 @@ describe('property', function () {
     get('/Q100?p=18')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Boston_Collage_4.png')
+      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Boston_Montage.jpg')
       done()
     })
     .catch(undesiredErr(done))
@@ -50,7 +50,7 @@ describe('property', function () {
     get('/Q100?p=4840,18,94,242')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Boston_Collage_4.png')
+      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Boston_Montage.jpg')
       done()
     })
     .catch(undesiredErr(done))
