@@ -50,6 +50,7 @@ for your next prototype, illustrate your concepts the lazy way:
         - [site](#site)
     - [Following a claim](#following-a-claim)
         - [properties bundles](#properties-bundles)
+        - [multiple properties](#multiple-properties)
   - [JSON](#json)
   - [Query the Hub as a search engine](#query-the-hub-as-a-search-engine)
     - [Firefox](#firefox)
@@ -225,6 +226,15 @@ The `image` and `avatar` bundles are designed to be a cheap way to give an image
 | [/Q604319?property=avatar,image&width=256](https://tools.wmflabs.org/hub/Q604319?property=avatar,image&width=256)       | https://avatars.io/twitter/laquadrature/large                                                     |
 | [/Q241?p=P242&w=1000](https://tools.wmflabs.org/hub/Q241?p=P242&w=1000)                            | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
 
+###### multiple properties
+
+Did you ever wish to link to Stephan Zweig's (Q78491) spouse's (P26) place of death (P20) administrative territory (P131) time zone (P421) image (P18) ? Now you can:
+
+|  **request**                                     | **redirection**                                                                                   |
+|--------------------------------------------------|---------------------------------------------------------------------------------------------------|
+| [/Q78491?property=P26>P20>P131>P421>P18](https://tools.wmflabs.org/hub/Q78491?property=P26>P20>P131>P421>P18)         | https://commons.wikimedia.org/wiki/Special:FilePath/Timezones2008_UTC-5_gray.png                  |
+
+
 ### JSON
 You can get a JSON response (status code `200`) instead of a redirection (status code `302`) by adding the query parameter `format=json`. Ex: [/Q184226?lang=fr&format=json](https://tools.wmflabs.org/hub/Q184226?lang=fr&format=json)
 This can be useful for debugging, or to use the internal resolver as a JSON API.
@@ -271,7 +281,7 @@ But we could be even more lazy by adding Hub as a search engine to your browser 
 * Source code: https://github.com/maxlath/hub
 
 ### Dependencies
-* [NodeJS](https://nodejs.org) `>v6.4.0` (recommended way to install: [NVM](https://github.com/creationix/nvm))
+* [NodeJS](https://nodejs.org) `>v6.4.0` (recommanded way to install: [NVM](https://github.com/creationix/nvm))
 
 ### Install
 ```sh
