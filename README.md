@@ -232,7 +232,7 @@ Did you ever wish to link to Stephan Zweig's (Q78491) spouse's (P26) place of de
 
 |  **request**                                     | **redirection**                                                                                   |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| [/Q78491?property=P26>P20>P131>P421>P18](https://tools.wmflabs.org/hub/Q78491?property=P26>P20>P131>P421>P18)         | https://commons.wikimedia.org/wiki/Special:FilePath/Timezones2008_UTC-5_gray.png                  |
+| [/Q78491?property=P26\|P20\|P131\|P421\|P18](https://tools.wmflabs.org/hub/Q78491?property=P26\|P20\|P131\|P421\|P18)         | https://commons.wikimedia.org/wiki/Special:FilePath/Timezones2008_UTC-5_gray.png                  |
 
 
 ### JSON
