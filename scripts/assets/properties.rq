@@ -1,4 +1,4 @@
-SELECT ?property ?label ?type ?urlFormat ?authority (GROUP_CONCAT(?alias;separator='\n') AS ?aliases)
+SELECT ?property ?label ?type ?urlFormat ?authority ?logo (GROUP_CONCAT(?alias;separator='\n') AS ?aliases)
 WHERE {
   ?property a wikibase:Property .
   ?property wikibase:propertyType ?propertyType .
@@ -13,9 +13,14 @@ WHERE {
     FILTER((LANG(?alias)) = "en")
   }
   OPTIONAL {
+    ?property wdt:P1629|wdt:P2378 ?deliverer .
+    ?deliverer wdt:P154 ?logo_url .
+    BIND(REPLACE(STR(?logo_url), "http://commons.wikimedia.org/wiki/Special:FilePath/", "") AS ?logo)
+  }
+  OPTIONAL {
     ?property wdt:P31/wdt:P279* wd:Q18614948 .
     BIND (TRUE AS ?authority)
   }
 }
-GROUP BY ?property ?label ?type ?urlFormat ?authority
+GROUP BY ?property ?label ?type ?urlFormat ?authority ?logo
 ORDER BY ASC(xsd:integer(STRAFTER(STR(?property), 'P')))
