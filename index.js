@@ -13,6 +13,8 @@ const publicFileRoot = process.cwd() + '/public/'
 const favicon = require('serve-favicon')(publicFileRoot + 'favicon.ico')
 app.use(favicon)
 
+app.use(require('./lib/cors_headers'))
+
 app.use(`${root}/public`, express.static(publicFileRoot))
 app.get(`${root}/query`, require('./lib/query'))
 app.get(`${root}/links/*`, require('./lib/links'))
