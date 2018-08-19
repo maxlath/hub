@@ -4,7 +4,6 @@ const properties = require('../lib/properties')
 var index = {}
 
 const indexPropertyByLabel = property => {
-
   const label = properties[property].label
     // Drop the generic part in external id properties labels
     // ex: 'VIAF ID' => 'VIAF'

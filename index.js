@@ -15,6 +15,7 @@ app.use(favicon)
 
 app.use(`${root}/public`, express.static(publicFileRoot))
 app.get(`${root}/query`, require('./lib/query'))
+app.get(`${root}/links/*`, require('./lib/links'))
 app.get(`${root}/`, require('./lib/home')(publicFileRoot))
 app.get(`${root}/*`, require('./lib/hub'))
 
