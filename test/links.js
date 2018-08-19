@@ -11,6 +11,7 @@ describe('links', function () {
       console.log('body:', res.body)
       res.body.P214.should.be.an.Object()
       res.body.P214.url.should.equal('https://viaf.org/viaf/101675162')
+      res.body.inventaire.url.should.equal('https://inventaire.io/entity/wd:Q1972359')
       done()
     })
     .catch(done)
