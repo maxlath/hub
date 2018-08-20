@@ -5,8 +5,9 @@ const properties = require('../lib/properties')
 var index = {}
 const { isUrlifyableProperty, randomDelay, formatLabel, getIconUrl } = require('../lib/links_data_helpers')
 const keyBy = require('lodash.keyby')
+const values = require('lodash.values')
 
-const promises = Object.values(properties)
+const promises = values(properties)
   .filter(isUrlifyableProperty)
   .map(propertyData => {
     var { property, label, logo, urlFormat } = propertyData
