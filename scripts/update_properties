@@ -17,3 +17,6 @@ echo "generating properties index"
 
 echo "copying the index in the public folder to make it publicly accessible"
 cp ./lib/properties_index.js ./public/properties_index.js
+
+echo "generating properties links data"
+./scripts/generate_links_data

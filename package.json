@@ -23,6 +23,7 @@
   "author": "maxlath",
   "license": "AGPL-3.0",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "bluereq": "^2.1.5",
     "chalk": "^2.3.0",
     "config": "^1.28.1",
@@ -30,6 +31,7 @@
     "express": "^4.16.2",
     "github-markdown-css": "^2.9.0",
     "inv-loggers": "^3.3.1",
+    "lodash.keyby": "^4.6.0",
     "lodash.pick": "^4.4.0",
     "lodash.values": "^4.3.0",
     "morgan": "^1.1.1",
