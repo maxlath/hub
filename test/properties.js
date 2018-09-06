@@ -37,20 +37,20 @@ describe('property', function () {
   })
 
   it('should accept properties a numeric id', done => {
-    get('/Q100?p=18')
+    get('/Q1396889?p=18')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Boston_Montage.jpg')
+      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Animal_Farm_-_1st_edition.jpg')
       done()
     })
     .catch(undesiredErr(done))
   })
 
   it('should accept properties numeric ids', done => {
-    get('/Q100?p=4840,18,94,242')
+    get('/Q1396889?p=4840,18,94,242')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Boston_Montage.jpg')
+      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Animal_Farm_-_1st_edition.jpg')
       done()
     })
     .catch(undesiredErr(done))
