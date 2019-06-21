@@ -20,6 +20,10 @@ const promises = values(properties)
       propertyData.icon = icon
       return { property, label, icon, urlFormat }
     })
+    .catch(err => {
+      console.error('generate_links_data err', err)
+      return { property, label, urlFormat }
+    })
   })
 
 Promise.all(promises)
