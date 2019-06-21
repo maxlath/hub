@@ -161,7 +161,7 @@ You can use short versions of those sites names:
 |-----------------|:-----------------|
 | `wikidata `     | `wd`             |
 | `wikipedia`     | `wp`             |
-| `commons`       | `c`              |
+| `commons`       | `c`, 'wc'        |
 | `wikisource`    | `ws`             |
 | `wikiquote`     | `wq`             |
 | `wiktionary`    | `wt`             |
