@@ -55,20 +55,20 @@ describe('sitelinks', function () {
   })
 
   it('should return the site for the first matching lang in the fallback chain', done => {
-    get('/Q184226?lang=als,oc,fr,en')
+    get('/Q184226?lang=als,nl,fr,en')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://oc.wikipedia.org/wiki/Gilles_Deleuze')
+      res.headers.location.should.equal('https://nl.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
     .catch(undesiredErr(done))
   })
 
   it('should return the site for the first matching lang in the fallback chain, even on the fallback site', done => {
-    get('/Q184226?site=wikivoyage&lang=als,oc,fr,en')
+    get('/Q184226?site=wikivoyage&lang=als,nl,fr,en')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://oc.wikipedia.org/wiki/Gilles_Deleuze')
+      res.headers.location.should.equal('https://nl.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
     .catch(undesiredErr(done))
