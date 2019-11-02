@@ -34,7 +34,6 @@
     "lodash.keyby": "^4.6.0",
     "lodash.pick": "^4.4.0",
     "lodash.values": "^4.3.0",
-    "morgan": "1.1.1",
     "serve-favicon": "^2.4.5",
     "wikidata-cli": "^7.5.1",
     "wikidata-sdk": "^7.0.7"

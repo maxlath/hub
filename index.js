@@ -3,10 +3,10 @@ const { name, root, port: configPort } = require('config')
 const port = process.env.PORT ? parseInt(process.env.PORT) : configPort
 const logger = require('./lib/logger')
 const express = require('express')
-const morgan = require('morgan')
+const requestsLogger = require('./lib/requests_logger')
 
 const app = express()
-app.use(morgan('dev'))
+app.use(requestsLogger)
 
 const publicFileRoot = process.cwd() + '/public/'
 
