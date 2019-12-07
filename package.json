@@ -36,6 +36,7 @@
     "lodash.values": "^4.3.0",
     "serve-favicon": "^2.4.5",
     "wikidata-cli": "^7.5.1",
+    "wikidata-lang": "^2.0.8",
     "wikidata-sdk": "^7.2.0"
   },
   "devDependencies": {
@@ -59,5 +60,18 @@
   "engines": {
     "node": "^8.2.1",
     "npm": "^5.4.1"
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxlath/hub.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maxlath/hub/issues"
+  },
+  "homepage": "https://github.com/maxlath/hub#readme"
 }

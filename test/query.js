@@ -51,4 +51,46 @@ describe('query', () => {
     })
     .catch(undesiredErr(done))
   })
+
+  describe('with sitelink urls as id', () => {
+    it('should redirect from sitelink urls', done => {
+      get('/query?q=https%3A%2F%2Fde.wikipedia.org%2Fwiki%2FThe_Score_%282001%29')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('/dewiki:The_Score_(2001)')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+
+    it('should deduce a lang', done => {
+      get('/query?q=https%3A%2F%2Fde.wikipedia.org%2Fwiki%2FThe_Score_%282001%29 nl')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('/dewiki:The_Score_(2001)?lang=nl')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+
+    it('should deduce a wikimedia site', done => {
+      get('/query?q=https%3A%2F%2Fde.wikipedia.org%2Fwiki%2FThe_Score_%282001%29 frwikisource')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('/dewiki:The_Score_(2001)?site=frwikisource')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+
+    it('should deduce a property', done => {
+      get('/query?q=https%3A%2F%2Fde.wikipedia.org%2Fwiki%2FThe_Score_%282001%29 imdb')
+      .then(res => {
+        res.statusCode.should.equal(302)
+        res.headers.location.should.equal('/dewiki:The_Score_(2001)?property=imdb')
+        done()
+      })
+      .catch(undesiredErr(done))
+    })
+  })
 })
