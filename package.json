@@ -34,7 +34,7 @@
     "lodash.values": "^4.3.0",
     "node-fetch": "^2.6.0",
     "serve-favicon": "^2.4.5",
-    "wikibase-cli": "^8.2.0",
+    "wikibase-cli": "^9.0.1",
     "wikidata-lang": "^2.0.8",
     "wikidata-sdk": "^7.2.0"
   },
