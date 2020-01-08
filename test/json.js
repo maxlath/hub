@@ -6,8 +6,8 @@ describe('json', function () {
     get('/Q184226?format=json')
     .then(res => {
       res.statusCode.should.equal(200)
-      res.body.origin.id.should.equal('Q184226')
-      res.body.destination.url.should.equal('https://en.wikipedia.org/wiki/Gilles_Deleuze')
+      res.data.origin.id.should.equal('Q184226')
+      res.data.destination.url.should.equal('https://en.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
     .catch(undesiredErr(done))

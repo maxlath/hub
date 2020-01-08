@@ -9,7 +9,7 @@ describe('aliases', function () {
       get('/frwiki:Gilles_Deleuze')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://en.wikipedia.org/wiki/Gilles_Deleuze')
+        res.headers.get('location').should.equal('https://en.wikipedia.org/wiki/Gilles_Deleuze')
         done()
       })
       .catch(undesiredErr(done))
@@ -19,7 +19,7 @@ describe('aliases', function () {
       get('/dewiki:Gilles_Deleuze?site=wikidata')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q184226')
+        res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q184226')
         done()
       })
       .catch(undesiredErr(done))
@@ -29,7 +29,7 @@ describe('aliases', function () {
       get('/eswikiquote:Gilles_Deleuze?lang=de')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://de.wikipedia.org/wiki/Gilles_Deleuze')
+        res.headers.get('location').should.equal('https://de.wikipedia.org/wiki/Gilles_Deleuze')
         done()
       })
       .catch(undesiredErr(done))
@@ -39,7 +39,7 @@ describe('aliases', function () {
       get('/eswikinews:Categoría:Alemania')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://en.wikipedia.org/wiki/Germany')
+        res.headers.get('location').should.equal('https://en.wikipedia.org/wiki/Germany')
         done()
       })
       .catch(undesiredErr(done))
@@ -49,7 +49,7 @@ describe('aliases', function () {
       get('/enwiki:DIY?site=wikidata')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q26384')
+        res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q26384')
         done()
       })
       .catch(undesiredErr(done))
@@ -59,7 +59,7 @@ describe('aliases', function () {
       get('/Edward_Snowden')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://en.wikipedia.org/wiki/Edward_Snowden')
+        res.headers.get('location').should.equal('https://en.wikipedia.org/wiki/Edward_Snowden')
         done()
       })
       .catch(undesiredErr(done))
@@ -69,7 +69,7 @@ describe('aliases', function () {
       get('/velo', 'fr')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://fr.wikipedia.org/wiki/Bicyclette')
+        res.headers.get('location').should.equal('https://fr.wikipedia.org/wiki/Bicyclette')
         done()
       })
       .catch(undesiredErr(done))
@@ -79,7 +79,7 @@ describe('aliases', function () {
       get('/la mulatière', 'fr')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://fr.wikipedia.org/wiki/La_Mulati%C3%A8re')
+        res.headers.get('location').should.equal('https://fr.wikipedia.org/wiki/La_Mulati%C3%A8re')
         done()
       })
       .catch(undesiredErr(done))
@@ -89,7 +89,7 @@ describe('aliases', function () {
       get('/fr:COURLY')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://en.wikipedia.org/wiki/Lyon_Metropolis')
+        res.headers.get('location').should.equal('https://en.wikipedia.org/wiki/Lyon_Metropolis')
         done()
       })
       .catch(undesiredErr(done))
@@ -111,7 +111,7 @@ describe('aliases', function () {
       get('/P2002:EFF?site=wikidata')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q624023')
+        res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q624023')
         done()
       })
       .catch(undesiredErr(done))
@@ -121,7 +121,7 @@ describe('aliases', function () {
       get('/P2002,P2003:EFF?site=wikidata')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q624023')
+        res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q624023')
         done()
       })
       .catch(undesiredErr(done))
@@ -131,7 +131,7 @@ describe('aliases', function () {
       get('/twitter:EFF?s=wd')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q624023')
+        res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q624023')
         done()
       })
       .catch(undesiredErr(done))
@@ -141,7 +141,7 @@ describe('aliases', function () {
       get('/hdl:10462/eadarc/7154?s=wd')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q15664389')
+        res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q15664389')
         done()
       })
       .catch(undesiredErr(done))
@@ -151,7 +151,7 @@ describe('aliases', function () {
       get('/DOI:10.1186/S13321-016-0161-3?s=wd')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q26899110')
+        res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q26899110')
         done()
       })
       .catch(undesiredErr(done))
@@ -161,7 +161,7 @@ describe('aliases', function () {
       get('/P4033,twitter,P2003:EFF?site=wikidata')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q624023')
+        res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q624023')
         done()
       })
       .catch(undesiredErr(done))

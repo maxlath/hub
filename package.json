@@ -23,8 +23,6 @@
   "author": "maxlath",
   "license": "AGPL-3.0",
   "dependencies": {
-    "bluebird": "^3.5.1",
-    "bluereq": "^2.1.7",
     "chalk": "^2.3.0",
     "config": "^1.28.1",
     "execa": "^0.9.0",
@@ -34,6 +32,7 @@
     "lodash.keyby": "^4.6.0",
     "lodash.pick": "^4.4.0",
     "lodash.values": "^4.3.0",
+    "node-fetch": "^2.6.0",
     "serve-favicon": "^2.4.5",
     "wikibase-cli": "^8.2.0",
     "wikidata-lang": "^2.0.8",

@@ -8,7 +8,7 @@ describe('sitelinks', function () {
     get('/Q184226')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://en.wikipedia.org/wiki/Gilles_Deleuze')
+      res.headers.get('location').should.equal('https://en.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
     .catch(undesiredErr(done))
@@ -18,7 +18,7 @@ describe('sitelinks', function () {
     get('/Q184226', 'fr')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://fr.wikipedia.org/wiki/Gilles_Deleuze')
+      res.headers.get('location').should.equal('https://fr.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
     .catch(undesiredErr(done))
@@ -28,7 +28,7 @@ describe('sitelinks', function () {
     get('/Q184226?lang=de', 'fr')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://de.wikipedia.org/wiki/Gilles_Deleuze')
+      res.headers.get('location').should.equal('https://de.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
     .catch(undesiredErr(done))
@@ -38,7 +38,7 @@ describe('sitelinks', function () {
     get('/Q184226?site=wikiquote')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://en.wikiquote.org/wiki/Gilles_Deleuze')
+      res.headers.get('location').should.equal('https://en.wikiquote.org/wiki/Gilles_Deleuze')
       done()
     })
     .catch(undesiredErr(done))
@@ -48,7 +48,7 @@ describe('sitelinks', function () {
     get('/Q184226?site=wikiquote&lang=fr')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://fr.wikiquote.org/wiki/Gilles_Deleuze')
+      res.headers.get('location').should.equal('https://fr.wikiquote.org/wiki/Gilles_Deleuze')
       done()
     })
     .catch(undesiredErr(done))
@@ -58,7 +58,7 @@ describe('sitelinks', function () {
     get('/Q184226?lang=als,nl,fr,en')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://nl.wikipedia.org/wiki/Gilles_Deleuze')
+      res.headers.get('location').should.equal('https://nl.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
     .catch(undesiredErr(done))
@@ -68,7 +68,7 @@ describe('sitelinks', function () {
     get('/Q184226?site=wikivoyage&lang=als,nl,fr,en')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://nl.wikipedia.org/wiki/Gilles_Deleuze')
+      res.headers.get('location').should.equal('https://nl.wikipedia.org/wiki/Gilles_Deleuze')
       done()
     })
     .catch(undesiredErr(done))
@@ -78,7 +78,7 @@ describe('sitelinks', function () {
     get('/Q184226?site=wikiquote&lang=ja')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://en.wikiquote.org/wiki/Gilles_Deleuze')
+      res.headers.get('location').should.equal('https://en.wikiquote.org/wiki/Gilles_Deleuze')
       done()
     })
     .catch(undesiredErr(done))
@@ -88,7 +88,7 @@ describe('sitelinks', function () {
     get('/Q184226?site=wikivoyage,wikiquote,wikipedia&lang=als,oc,fr,en')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://fr.wikiquote.org/wiki/Gilles_Deleuze')
+      res.headers.get('location').should.equal('https://fr.wikiquote.org/wiki/Gilles_Deleuze')
       done()
     })
     .catch(undesiredErr(done))
@@ -98,7 +98,7 @@ describe('sitelinks', function () {
     get('/Q184226?site=wikivoyage,wikidata,wikipedia&lang=als,oc,fr,en')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://www.wikidata.org/wiki/Q184226')
+      res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q184226')
       done()
     })
     .catch(undesiredErr(done))
@@ -108,7 +108,7 @@ describe('sitelinks', function () {
     get('/Q184226?s=wikivoyage,wikidata,wikipedia&l=als,oc,fr,en')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://www.wikidata.org/wiki/Q184226')
+      res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q184226')
       done()
     })
     .catch(undesiredErr(done))
@@ -118,7 +118,7 @@ describe('sitelinks', function () {
     get('/Q184226?s=wv,wd,wp&l=als,oc,fr,en')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://www.wikidata.org/wiki/Q184226')
+      res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q184226')
       done()
     })
     .catch(undesiredErr(done))
@@ -128,7 +128,7 @@ describe('sitelinks', function () {
     get('/P610')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://www.wikidata.org/wiki/Property:P610')
+      res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Property:P610')
       done()
     })
     .catch(undesiredErr(done))
@@ -138,7 +138,7 @@ describe('sitelinks', function () {
     get('/Q4911143?site=scholia')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://tools.wmflabs.org/scholia/Q4911143')
+      res.headers.get('location').should.equal('https://tools.wmflabs.org/scholia/Q4911143')
       done()
     })
     .catch(undesiredErr(done))

@@ -1,14 +1,15 @@
 const { port } = require('config')
 const host = 'http://localhost:' + port
-const breq = require('bluereq')
 const logger = require('../../lib/logger')
+const { get } = require('../../lib/request')
 
 module.exports = {
   get: (url, lang) => {
-    return breq.get({
-      url: host + url,
-      headers: { 'accept-language': lang },
-      followRedirect: false
+    const headers = {}
+    if (lang) headers['accept-language'] = lang
+    return get(host + url, {
+      headers,
+      redirect: 'manual'
     })
   },
   // A function to quickly fail when a test gets an undesired positive answer

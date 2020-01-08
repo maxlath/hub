@@ -30,7 +30,7 @@ describe('property', function () {
     get('/Q241?p=P242&w=1000')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000')
+      res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000')
       done()
     })
     .catch(undesiredErr(done))
@@ -40,7 +40,7 @@ describe('property', function () {
     get('/Q1396889?p=18')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Animal_Farm_-_1st_edition.jpg')
+      res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Animal_Farm_-_1st_edition.jpg')
       done()
     })
     .catch(undesiredErr(done))
@@ -50,7 +50,7 @@ describe('property', function () {
     get('/Q1396889?p=4840,18,94,242')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Animal_Farm_-_1st_edition.jpg')
+      res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Animal_Farm_-_1st_edition.jpg')
       done()
     })
     .catch(undesiredErr(done))
@@ -60,7 +60,7 @@ describe('property', function () {
     get('/Q241?property=P18,P242,P94,P2002')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg')
+      res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg')
       done()
     })
     .catch(undesiredErr(done))
@@ -70,7 +70,7 @@ describe('property', function () {
     get('/P610?p=P1855')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.location.should.equal('https://en.wikipedia.org/wiki/Norway')
+      res.headers.get('location').should.equal('https://en.wikipedia.org/wiki/Norway')
       done()
     })
     .catch(undesiredErr(done))
@@ -81,7 +81,7 @@ describe('property', function () {
       get('/Q37033?property=P856')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.w3.org/')
+        res.headers.get('location').should.equal('https://www.w3.org/')
         done()
       })
       .catch(undesiredErr(done))
@@ -93,7 +93,7 @@ describe('property', function () {
       get('/Q34981?property=P1938')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.gutenberg.org/ebooks/author/35316')
+        res.headers.get('location').should.equal('https://www.gutenberg.org/ebooks/author/35316')
         done()
       })
       .catch(undesiredErr(done))
@@ -105,7 +105,7 @@ describe('property', function () {
       get('/Q155?property=P38')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://en.wikipedia.org/wiki/Brazilian_real')
+        res.headers.get('location').should.equal('https://en.wikipedia.org/wiki/Brazilian_real')
         done()
       })
       .catch(undesiredErr(done))
@@ -115,7 +115,7 @@ describe('property', function () {
       get('/Q155?property=P38&site=wikidata')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.wikidata.org/wiki/Q173117')
+        res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q173117')
         done()
       })
       .catch(undesiredErr(done))
@@ -125,7 +125,7 @@ describe('property', function () {
       get('/Q155?property=P38&lang=nl')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://nl.wikipedia.org/wiki/Braziliaanse_real')
+        res.headers.get('location').should.equal('https://nl.wikipedia.org/wiki/Braziliaanse_real')
         done()
       })
       .catch(undesiredErr(done))
@@ -137,7 +137,7 @@ describe('property', function () {
       get('/Q456?property=P625')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.openstreetmap.org/?mlat=45.758888888889&mlon=4.8413888888889')
+        res.headers.get('location').should.equal('https://www.openstreetmap.org/?mlat=45.758888888889&mlon=4.8413888888889')
         done()
       })
       .catch(undesiredErr(done))
@@ -149,7 +149,7 @@ describe('property', function () {
       get('/Q241?property=P242')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg')
+        res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg')
         done()
       })
       .catch(undesiredErr(done))
@@ -158,7 +158,7 @@ describe('property', function () {
       get('/Q241?property=P242&width=1000')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000')
+        res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000')
         done()
       })
       .catch(undesiredErr(done))
@@ -170,7 +170,7 @@ describe('property', function () {
       get('/Q241?property=image')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Cuba.svg')
+        res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Cuba.svg')
         done()
       })
       .catch(undesiredErr(done))
@@ -180,7 +180,7 @@ describe('property', function () {
       get('/Edward_Snowden?property=social')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://twitter.com/Snowden')
+        res.headers.get('location').should.equal('https://twitter.com/Snowden')
         done()
       })
       .catch(undesiredErr(done))
@@ -189,7 +189,7 @@ describe('property', function () {
       get('/Q4032?property=avatar&width=150')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://avatars.io/twitter/UnivLyon1/large')
+        res.headers.get('location').should.equal('https://avatars.io/twitter/UnivLyon1/large')
         done()
       })
       .catch(undesiredErr(done))
@@ -198,7 +198,7 @@ describe('property', function () {
       get('/Q34981?property=gutenberg')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://www.gutenberg.org/ebooks/author/35316')
+        res.headers.get('location').should.equal('https://www.gutenberg.org/ebooks/author/35316')
         done()
       })
       .catch(undesiredErr(done))
@@ -211,7 +211,7 @@ describe('property', function () {
       get('/P3217:8143?property=P19|P5324')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://sok.riksarkivet.se/?postid=ArkisRef%20SE/SSA/6009')
+        res.headers.get('location').should.equal('https://sok.riksarkivet.se/?postid=ArkisRef%20SE/SSA/6009')
         done()
       })
       .catch(undesiredErr(done))
@@ -221,7 +221,7 @@ describe('property', function () {
       get('/Q78491?property=P26|P20|P131|P421|P18')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.location.should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Timezones2008_UTC-5_gray.png')
+        res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Timezones2008_UTC-5_gray.png')
         done()
       })
       .catch(undesiredErr(done))

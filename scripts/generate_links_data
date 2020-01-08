@@ -1,9 +1,8 @@
 #!/usr/bin/env node
-global.Promise = require('bluebird')
 const fs = require('fs')
 const properties = require('../lib/properties')
 var index = {}
-const { isUrlifyableProperty, randomDelay, formatLabel, getIconUrl } = require('../lib/links_data_helpers')
+const { isUrlifyableProperty, wait, randomDelay, formatLabel, getIconUrl } = require('../lib/links_data_helpers')
 const keyBy = require('lodash.keyby')
 const values = require('lodash.values')
 
@@ -12,9 +11,8 @@ const promises = values(properties)
   .map(propertyData => {
     var { property, label, logo, urlFormat } = propertyData
     label = formatLabel(label)
-    return Promise.resolve()
     // Spreading calls on a some seconds
-    .delay(randomDelay())
+    return wait(randomDelay())
     .then(() => getIconUrl(logo))
     .then(icon => {
       propertyData.icon = icon
