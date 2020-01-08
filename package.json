@@ -2,10 +2,10 @@
   "name": "hub",
   "version": "1.0.0",
   "description": "Web hub based on Wikidata",
-  "main": "index.js",
+  "main": "lib/server.js",
   "scripts": {
-    "start": "export FORCE_COLOR=true; node index.js",
-    "watch": "supervisor -w index.js,lib,config index.js",
+    "start": "export FORCE_COLOR=true; node ./lib/server.js",
+    "watch": "supervisor -w lib,config ./lib/server.js",
     "postinstall": "./scripts/postinstall",
     "lint": "standard",
     "test": "mocha",
