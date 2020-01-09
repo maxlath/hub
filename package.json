@@ -29,7 +29,6 @@
     "github-markdown-css": "^2.9.0",
     "lodash.keyby": "^4.6.0",
     "lodash.pick": "^4.4.0",
-    "lodash.values": "^4.3.0",
     "node-fetch": "^2.6.0",
     "tiny-chalk": "^2.0.0",
     "wikibase-cli": "^9.0.1",
@@ -55,8 +54,7 @@
     ]
   },
   "engines": {
-    "node": "^8.2.1",
-    "npm": "^5.4.1"
+    "node": ">= 8"
   },
   "directories": {
     "doc": "docs",
