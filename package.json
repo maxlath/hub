@@ -27,7 +27,6 @@
     "execa": "^0.9.0",
     "express": "^4.16.2",
     "github-markdown-css": "^2.9.0",
-    "lodash.keyby": "^4.6.0",
     "lodash.pick": "^4.4.0",
     "node-fetch": "^2.6.0",
     "tiny-chalk": "^2.0.0",

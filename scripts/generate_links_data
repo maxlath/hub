@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const properties = require('../lib/properties')
-var index = {}
 const { isUrlifyableProperty, wait, randomDelay, formatLabel, getIconUrl } = require('../lib/links_data_helpers')
-const keyBy = require('lodash.keyby')
+const { keyBy } = require('../lib/utils')
 
 const promises = Object.values(properties)
   .filter(isUrlifyableProperty)
@@ -23,6 +22,7 @@ const promises = Object.values(properties)
     })
   })
 
+const index = {}
 Promise.all(promises)
 .then(propertiesData => {
   const index = keyBy(propertiesData, 'property')
