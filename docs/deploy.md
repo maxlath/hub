@@ -20,6 +20,7 @@ git clone https://github.com/maxlath/hub js
 cd js
 
 echo "module.exports = {
+  host: 'https://tools.wmflabs.org',
   // Customize root to match the URL passed by Nginx
   root: '/hub'
 }" > config/local.js

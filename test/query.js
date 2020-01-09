@@ -1,12 +1,14 @@
 require('should')
 const { get, undesiredErr } = require('./lib/utils')
+const base = require('config').base()
+const parseLocation = res => res.headers.get('location').replace(base, '')
 
 describe('query', () => {
   it('should redirect to the hub separting params with spaces', done => {
     get('/query?q=Q3 s=wq l=es')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.get('location').should.equal('/Q3?s=wq&l=es')
+      parseLocation(res).should.equal('/Q3?s=wq&l=es')
       done()
     })
     .catch(undesiredErr(done))
@@ -16,7 +18,7 @@ describe('query', () => {
     get('/query?q=Q3%20s=wq%20l=es')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.get('location').should.equal('/Q3?s=wq&l=es')
+      parseLocation(res).should.equal('/Q3?s=wq&l=es')
       done()
     })
     .catch(undesiredErr(done))
@@ -26,7 +28,7 @@ describe('query', () => {
     get('/query?q=Q3&s=wq&l=es')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.get('location').should.equal('/Q3?s=wq&l=es')
+      parseLocation(res).should.equal('/Q3?s=wq&l=es')
       done()
     })
     .catch(undesiredErr(done))
@@ -36,7 +38,7 @@ describe('query', () => {
     get('/query?q=fr:baden baden s=inv')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.get('location').should.equal('/fr:baden%20baden?s=inv')
+      parseLocation(res).should.equal('/fr:baden%20baden?s=inv')
       done()
     })
     .catch(undesiredErr(done))
@@ -46,7 +48,7 @@ describe('query', () => {
     get('/query')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.get('location').should.equal('/?#query-the-hub-as-a-search-engine')
+      parseLocation(res).should.equal('/?#query-the-hub-as-a-search-engine')
       done()
     })
     .catch(undesiredErr(done))
@@ -57,7 +59,7 @@ describe('query', () => {
       get('/query?q=https%3A%2F%2Fde.wikipedia.org%2Fwiki%2FThe_Score_%282001%29')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.get('location').should.equal('/dewiki:The_Score_(2001)')
+        parseLocation(res).should.equal('/dewiki:The_Score_(2001)')
         done()
       })
       .catch(undesiredErr(done))
@@ -67,7 +69,7 @@ describe('query', () => {
       get('/query?q=https%3A%2F%2Fde.wikipedia.org%2Fwiki%2FThe_Score_%282001%29 nl')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.get('location').should.equal('/dewiki:The_Score_(2001)?lang=nl')
+        parseLocation(res).should.equal('/dewiki:The_Score_(2001)?lang=nl')
         done()
       })
       .catch(undesiredErr(done))
@@ -77,7 +79,7 @@ describe('query', () => {
       get('/query?q=https%3A%2F%2Fde.wikipedia.org%2Fwiki%2FThe_Score_%282001%29 frwikisource')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.get('location').should.equal('/dewiki:The_Score_(2001)?site=frwikisource')
+        parseLocation(res).should.equal('/dewiki:The_Score_(2001)?site=frwikisource')
         done()
       })
       .catch(undesiredErr(done))
@@ -87,7 +89,7 @@ describe('query', () => {
       get('/query?q=https%3A%2F%2Fde.wikipedia.org%2Fwiki%2FThe_Score_%282001%29 imdb')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.get('location').should.equal('/dewiki:The_Score_(2001)?property=imdb')
+        parseLocation(res).should.equal('/dewiki:The_Score_(2001)?property=imdb')
         done()
       })
       .catch(undesiredErr(done))
