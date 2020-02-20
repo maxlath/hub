@@ -207,11 +207,11 @@ describe('property', function () {
 
   describe('multi properties', () => {
     it('should follow 2 properties', done => {
-      // Example from https://twitter.com/salgo60/status/1010471186164277248
-      get('/P3217:8143?property=P19|P5324')
+      // Inspired by https://twitter.com/salgo60/status/1010471186164277248
+      get('/P3217:15780?property=P19|P5324')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.get('location').should.equal('https://sok.riksarkivet.se/?postid=ArkisRef%20SE/SSA/6009')
+        res.headers.get('location').should.equal('https://www.stockholm.se')
         done()
       })
       .catch(undesiredErr(done))
