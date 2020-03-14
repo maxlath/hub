@@ -22,7 +22,8 @@ we can now link to Wikipedia articles about a concept in the user's favorite lan
 but, after choosing your starting point, you can also customize your destination:
 - here we go from one Wikipedia to the other: [/en:Economy?lang=de](https://tools.wmflabs.org/hub/en:Economy?lang=de)
 - here from Wikidata to Wikiquote: [/Q184226?site=wikiquote](https://tools.wmflabs.org/hub/Q184226?site=wikiquote)
-- between any external ids known by Wikidata: [/viaf:24597135?property=P1938](https://tools.wmflabs.org/hub/viaf:24597135?property=P1938)
+- between any external ids known by Wikidata: [/viaf:24597135?property=P7704](https://tools.wmflabs.org/hub/viaf:24597135?property=P7704)
+- or between any external id and websites using Wikidata ids: [/viaf:24597135?site=inventaire](https://tools.wmflabs.org/hub/viaf:24597135?site=inventaire)
 
 for your next prototype, illustrate your concepts the lazy way:
 
