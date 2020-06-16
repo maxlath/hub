@@ -145,19 +145,17 @@ A `w` can be used for short for `width`.
 ###### properties bundles
 
 Instead of a list of properties, you can use special bundle keys, that behave like a list of properties.
-The `image` and `avatar` bundles are designed to be a cheap way to give an image to an entity:
+The `image` property is a bundles designed to be an easy way to give an image to an entity:
 ```html
-<img src="/Q624023?property=image,avatar&width=256" />
+<img src="/Q624023?property=image&width=256" />
 ```
 
 |  **request**                                     | **redirection**                                                                                   |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------|
 | `/Q624023?property=image`                        | https://commons.wikimedia.org/wiki/Special:FilePath/EFF_Logo.svg                                  |
-| `/Q624023?property=avatar`                       | https://avatars.io/twitter/EFF/                                                                   |
 | `/Q624023?property=social`                       | https://twitter.com/EFF                                                                           |
 | `/Q604319?property=social`                       | https://tools.wmflabs.org/wikidata-externalid-url/?p=4033&id=LaQuadrature@mamot.fr                |
-| `/Q624023?property=image,avatar&width=120`       | https://commons.wikimedia.org/wiki/Special:FilePath/EFF_Logo.svg?width=120                        |
-| `/Q604319?property=avatar,image&width=256`       | https://avatars.io/twitter/laquadrature/large                                                     |
+| `/Q624023?property=image&width=120`              | https://commons.wikimedia.org/wiki/Special:FilePath/EFF_Logo.svg?width=120                        |
 | `/Q241?p=P242&w=1000`                            | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
 
 ###### multiple properties

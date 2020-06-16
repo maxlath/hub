@@ -26,7 +26,6 @@ for your next prototype, illustrate your concepts the lazy way:
 <!-- Using local images as Github messes with the raw URLs -->
 |  image                                           | src                                         |
 |:-------------------------------------------------|:--------------------------------------------|
-| ![avatar example](assets/images/esa.jpeg)        | `/Q42262?property=avatar&width=128`         |
 | ![image example](assets/images/laniakea.jpg)     | `/frwiki:Laniakea?property=image&width=256` |
 
 ## Summary
