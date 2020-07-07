@@ -179,12 +179,12 @@ This can be useful for debugging, or to use the internal resolver as a JSON API.
 ### Query the Hub as a search engine
 Building Hub URLs from the URL bar requires a few steps:
 - go to your browser URL bar (shortcut: `Ctrl+L` or `Alt+D`)
-- enter some keys to make your history suggest one of your previous `https://tools.wmflabs.org/hub/` URLs
-- edit the URL as you please. Example: https://tools.wmflabs.org/hub/Q1?l=fr
+- enter some keys to make your history suggest one of your previous `https://hub.toolforge.org/` URLs
+- edit the URL as you please. Example: https://hub.toolforge.org/Q1?l=fr
 
 But we could be even more lazy by adding Hub as a search engine to your browser (see tutorials hereafter for [firefox](#firefox) and [chrome](#chrome)). The steps can now be as follow (assuming you set `hub` as search engine keyword):
 - go to your browser URL bar (shortcut: `Ctrl+L` or `Alt+D`)
-- enter the URL elements as you would do if you where editing the `https://tools.wmflabs.org/hub/` URL, separating elements with spaces. Example: `hub Q1 l=fr`
+- enter the URL elements as you would do if you where editing the `https://hub.toolforge.org/` URL, separating elements with spaces. Example: `hub Q1 l=fr`
 
 #### Firefox
 - Follow this tutorial to add the Hub to your search engines list: [Add a search engine](https://support.mozilla.org/en-US/kb/add-or-remove-search-engine-firefox#w_add-a-search-engine)
@@ -200,7 +200,7 @@ But we could be even more lazy by adding Hub as a search engine to your browser 
 - in the **Other search engines** section, click **Add**, and fill as follow:
   - **Search Engine**: Hub
   - **Keyword**: hub
-  - **URL with %s instead of the request**: https://tools.wmflabs.org/hub/query?q=%s
+  - **URL with %s instead of the request**: https://hub.toolforge.org/query?q=%s
 - Try it:
   -  go to your browser address bar (shortcut: `Ctrl+L`)
   -  type `hub`, press `Tab`: the address bar should now display `Search on Hub`

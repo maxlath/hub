@@ -13,24 +13,24 @@ This is a **Web hub**: it let's you craft URLs to go from an **origin** to a **d
 **A few examples to catch your interest**:
 
 we can now link to Wikipedia articles about a concept in the user's favorite language:
-- from a Wikidata id: [/Q3](https://tools.wmflabs.org/hub/Q3)
-- from an article title from the English Wikipedia: [/Lyon](https://tools.wmflabs.org/hub/Lyon)
-- or another Wikipedia: [/zh:阿根廷](https://tools.wmflabs.org/hub/zh:阿根廷)
-- or any Wikimedia project: [/frwikivoyage:Allemagne](https://tools.wmflabs.org/hub/frwikivoyage:Allemagne)
-- or any external id known by Wikidata: [/twitter:doctorow](https://tools.wmflabs.org/hub/twitter:doctorow)
+- from a Wikidata id: [/Q3](https://hub.toolforge.org/Q3)
+- from an article title from the English Wikipedia: [/Lyon](https://hub.toolforge.org/Lyon)
+- or another Wikipedia: [/zh:阿根廷](https://hub.toolforge.org/zh:阿根廷)
+- or any Wikimedia project: [/frwikivoyage:Allemagne](https://hub.toolforge.org/frwikivoyage:Allemagne)
+- or any external id known by Wikidata: [/twitter:doctorow](https://hub.toolforge.org/twitter:doctorow)
 
 but, after choosing your starting point, you can also customize your destination:
-- here we go from one Wikipedia to the other: [/en:Economy?lang=de](https://tools.wmflabs.org/hub/en:Economy?lang=de)
-- here from Wikidata to Wikiquote: [/Q184226?site=wikiquote](https://tools.wmflabs.org/hub/Q184226?site=wikiquote)
-- between any external ids known by Wikidata: [/viaf:24597135?property=P7704](https://tools.wmflabs.org/hub/viaf:24597135?property=P7704)
-- or between any external id and websites using Wikidata ids: [/viaf:24597135?site=inventaire](https://tools.wmflabs.org/hub/viaf:24597135?site=inventaire)
+- here we go from one Wikipedia to the other: [/en:Economy?lang=de](https://hub.toolforge.org/en:Economy?lang=de)
+- here from Wikidata to Wikiquote: [/Q184226?site=wikiquote](https://hub.toolforge.org/Q184226?site=wikiquote)
+- between any external ids known by Wikidata: [/viaf:24597135?property=P7704](https://hub.toolforge.org/viaf:24597135?property=P7704)
+- or between any external id and websites using Wikidata ids: [/viaf:24597135?site=inventaire](https://hub.toolforge.org/viaf:24597135?site=inventaire)
 
 for your next prototype, illustrate your concepts the lazy way:
 
 <!-- Using local images as Github messes with the raw URLs -->
 |  image                                           | src                                         |
 |:-------------------------------------------------|:--------------------------------------------|
-| ![image example](https://raw.githubusercontent.com/maxlath/hub/master/assets/images/laniakea.jpg)     | [/frwiki:Laniakea?property=image&width=256](https://tools.wmflabs.org/hub/frwiki:Laniakea?property=image&width=256) |
+| ![image example](https://raw.githubusercontent.com/maxlath/hub/master/assets/images/laniakea.jpg)     | [/frwiki:Laniakea?property=image&width=256](https://hub.toolforge.org/frwiki:Laniakea?property=image&width=256) |
 
 ## Summary
 
@@ -74,7 +74,7 @@ The separation between the origin and the destination is expressed in the URL by
 
 Example:
 
-* url: [/enwiki:Economy?lang=nl&site=wikinews](https://tools.wmflabs.org/hub/enwiki:Economy?lang=nl&site=wikinews)
+* url: [/enwiki:Economy?lang=nl&site=wikinews](https://hub.toolforge.org/enwiki:Economy?lang=nl&site=wikinews)
 * origin: the [`Economy` article in the English Wikipedia](https://en.wikipedia.org/wiki/Economy)
 * destination: [the corresponding article in the Dutch Wikinews](https://nl.wikinews.org/wiki/Categorie:Economie)
 
@@ -85,10 +85,10 @@ As the real hub in this story is Wikidata, every request needs to first resolve 
 
 |  request                                    | redirection                                          |
 |:--------------------------------------------|:-----------------------------------------------------|
-| [/Q1](https://tools.wmflabs.org/hub/Q1)                                       | https://en.wikipedia.org/wiki/Universe               |
-| [/Q2](https://tools.wmflabs.org/hub/Q2)                                       | https://en.wikipedia.org/wiki/Earth                  |
+| [/Q1](https://hub.toolforge.org/Q1)                                       | https://en.wikipedia.org/wiki/Universe               |
+| [/Q2](https://hub.toolforge.org/Q2)                                       | https://en.wikipedia.org/wiki/Earth                  |
 | ...                                         |                                                      |
-| [/Q1388426](https://tools.wmflabs.org/hub/Q1388426)                                 | https://en.wikipedia.org/wiki/Bo%C3%ABn-sur-Lignon   |
+| [/Q1388426](https://hub.toolforge.org/Q1388426)                                 | https://en.wikipedia.org/wiki/Bo%C3%ABn-sur-Lignon   |
 
 #### Wikipedia and other Wikimedia Project
 
@@ -96,20 +96,20 @@ Alternatively to a Wikidata id, you can pass a key built from sitelinks as start
 
 |  request                                         | redirection                                                                             |
 |:-------------------------------------------------|:----------------------------------------------------------------------------------------|
-| [/frwikivoyage:Allemagne](https://tools.wmflabs.org/hub/frwikivoyage:Allemagne)                        | https://en.wikipedia.org/wiki/Germany                                                   |
-| [/eswikinews:Categoría:Alemania](https://tools.wmflabs.org/hub/eswikinews:Categoría:Alemania)                 | https://en.wikipedia.org/wiki/Germany                                                   |
-| [/ocwiki:Alemanha?lang=de](https://tools.wmflabs.org/hub/ocwiki:Alemanha?lang=de)                       | https://de.wikipedia.org/wiki/Deutschland                                               |
-| [/ocwiki:Alemanha?lang=el,fa&site=wikivoyage](https://tools.wmflabs.org/hub/ocwiki:Alemanha?lang=el,fa&site=wikivoyage)    | https://el.wikivoyage.org/wiki/%CE%93%CE%B5%CF%81%CE%BC%CE%B1%CE%BD%CE%AF%CE%B1         |
-| [/enwiki:Edward_Snowden?property=P2002](https://tools.wmflabs.org/hub/enwiki:Edward_Snowden?property=P2002)          | https://twitter.com/Snowden                                                             |
-| [/enwiki:DIY?site=wikidata](https://tools.wmflabs.org/hub/enwiki:DIY?site=wikidata)                      | https://www.wikidata.org/wiki/Q26384                                                    |
-| [/DIY?site=wikidata](https://tools.wmflabs.org/hub/DIY?site=wikidata)                             | https://www.wikidata.org/wiki/Q26384                                                    |
+| [/frwikivoyage:Allemagne](https://hub.toolforge.org/frwikivoyage:Allemagne)                        | https://en.wikipedia.org/wiki/Germany                                                   |
+| [/eswikinews:Categoría:Alemania](https://hub.toolforge.org/eswikinews:Categoría:Alemania)                 | https://en.wikipedia.org/wiki/Germany                                                   |
+| [/ocwiki:Alemanha?lang=de](https://hub.toolforge.org/ocwiki:Alemanha?lang=de)                       | https://de.wikipedia.org/wiki/Deutschland                                               |
+| [/ocwiki:Alemanha?lang=el,fa&site=wikivoyage](https://hub.toolforge.org/ocwiki:Alemanha?lang=el,fa&site=wikivoyage)    | https://el.wikivoyage.org/wiki/%CE%93%CE%B5%CF%81%CE%BC%CE%B1%CE%BD%CE%AF%CE%B1         |
+| [/enwiki:Edward_Snowden?property=P2002](https://hub.toolforge.org/enwiki:Edward_Snowden?property=P2002)          | https://twitter.com/Snowden                                                             |
+| [/enwiki:DIY?site=wikidata](https://hub.toolforge.org/enwiki:DIY?site=wikidata)                      | https://www.wikidata.org/wiki/Q26384                                                    |
+| [/DIY?site=wikidata](https://hub.toolforge.org/DIY?site=wikidata)                             | https://www.wikidata.org/wiki/Q26384                                                    |
 
 #### External Ids
 |  request                                         | redirection                                                                             |
 |:-------------------------------------------------|:----------------------------------------------------------------------------------------|
-| [/P214:24597135](https://tools.wmflabs.org/hub/P214:24597135)                                 | https://en.wikipedia.org/wiki/Isaac_Asimov                                              |
-| [/viaf:24597135](https://tools.wmflabs.org/hub/viaf:24597135)                                 | https://en.wikipedia.org/wiki/Isaac_Asimov                                              |
-| [/twitter:doctorow](https://tools.wmflabs.org/hub/twitter:doctorow)                              | https://en.wikipedia.org/wiki/Cory_Doctorow                                             |
+| [/P214:24597135](https://hub.toolforge.org/P214:24597135)                                 | https://en.wikipedia.org/wiki/Isaac_Asimov                                              |
+| [/viaf:24597135](https://hub.toolforge.org/viaf:24597135)                                 | https://en.wikipedia.org/wiki/Isaac_Asimov                                              |
+| [/twitter:doctorow](https://hub.toolforge.org/twitter:doctorow)                              | https://en.wikipedia.org/wiki/Cory_Doctorow                                             |
 
 ### Destination
 #### Default
@@ -117,7 +117,7 @@ By default, the destination is Wikipedia in the user language, which is guessed 
 
 |  request                                    | redirection                                          |
 |:--------------------------------------------|:-----------------------------------------------------|
-| [/Q184226](https://tools.wmflabs.org/hub/Q184226)                                  | https://en.wikipedia.org/wiki/Gilles_Deleuze         |
+| [/Q184226](https://hub.toolforge.org/Q184226)                                  | https://en.wikipedia.org/wiki/Gilles_Deleuze         |
 
 #### Wikimedia Projects
 ###### lang
@@ -126,8 +126,8 @@ Pass a `lang` parameter (or just `l`) to override the `accept-language` header. 
 
 |  request                                    | redirection                                          |
 |:--------------------------------------------|:-----------------------------------------------------|
-| [/Q184226?lang=fr](https://tools.wmflabs.org/hub/Q184226?lang=fr)                          | https://fr.wikipedia.org/wiki/Gilles_Deleuze         |
-| [/Q184226?lang=als,oc,fr,en&site=wikiquote](https://tools.wmflabs.org/hub/Q184226?lang=als,oc,fr,en&site=wikiquote) | https://oc.wikipedia.org/wiki/Gilles_Deleuze         |
+| [/Q184226?lang=fr](https://hub.toolforge.org/Q184226?lang=fr)                          | https://fr.wikipedia.org/wiki/Gilles_Deleuze         |
+| [/Q184226?lang=als,oc,fr,en&site=wikiquote](https://hub.toolforge.org/Q184226?lang=als,oc,fr,en&site=wikiquote) | https://oc.wikipedia.org/wiki/Gilles_Deleuze         |
 
 ###### site
 
@@ -135,23 +135,23 @@ Pass a `site` parameter (or just `s`) to redirect to another site than `wikipedi
 
 |  request                                                           | redirection                                          |
 |:-------------------------------------------------------------------|:-----------------------------------------------------|
-| [/Q184226?site=wikiquote](https://tools.wmflabs.org/hub/Q184226?site=wikiquote)                                          | https://en.wikiquote.org/wiki/Gilles_Deleuze         |
-| [/Q184226?site=wikivoyage](https://tools.wmflabs.org/hub/Q184226?site=wikivoyage)                                         | https://en.wikipedia.org/wiki/Gilles_Deleuze         |
-| [/Q184226?site=wikivoyage,wikiquote](https://tools.wmflabs.org/hub/Q184226?site=wikivoyage,wikiquote)                               | https://en.wikiquote.org/wiki/Gilles_Deleuze         |
-| [/Q184226?site=wikiquote&lang=fr](https://tools.wmflabs.org/hub/Q184226?site=wikiquote&lang=fr)                                  | https://fr.wikiquote.org/wiki/Gilles_Deleuze         |
-| [/Q184226?site=wikivoyage,wikiquote,wikipedia&lang=als,oc,fr,en](https://tools.wmflabs.org/hub/Q184226?site=wikivoyage,wikiquote,wikipedia&lang=als,oc,fr,en)   | https://fr.wikiquote.org/wiki/Gilles_Deleuze         |
+| [/Q184226?site=wikiquote](https://hub.toolforge.org/Q184226?site=wikiquote)                                          | https://en.wikiquote.org/wiki/Gilles_Deleuze         |
+| [/Q184226?site=wikivoyage](https://hub.toolforge.org/Q184226?site=wikivoyage)                                         | https://en.wikipedia.org/wiki/Gilles_Deleuze         |
+| [/Q184226?site=wikivoyage,wikiquote](https://hub.toolforge.org/Q184226?site=wikivoyage,wikiquote)                               | https://en.wikiquote.org/wiki/Gilles_Deleuze         |
+| [/Q184226?site=wikiquote&lang=fr](https://hub.toolforge.org/Q184226?site=wikiquote&lang=fr)                                  | https://fr.wikiquote.org/wiki/Gilles_Deleuze         |
+| [/Q184226?site=wikivoyage,wikiquote,wikipedia&lang=als,oc,fr,en](https://hub.toolforge.org/Q184226?site=wikivoyage,wikiquote,wikipedia&lang=als,oc,fr,en)   | https://fr.wikiquote.org/wiki/Gilles_Deleuze         |
 
 This can also include sites that can build URLs from Wikidata ids:
 
 |  request                                                           | redirection                                          |
 |:-------------------------------------------------------------------|:-----------------------------------------------------|
-| [/Q23936146?site=crotos](https://tools.wmflabs.org/hub/Q23936146?site=crotos)                                           | http://zone47.com/crotos/?q=Q23936146                |
-| [/Q184226?site=inventaire](https://tools.wmflabs.org/hub/Q184226?site=inventaire)                                         | https://inventaire.io/entity/wd:Q184226              |
-| [/Q638519?site=monumental](https://tools.wmflabs.org/hub/Q638519?site=monumental)                                         | https://tools.wmflabs.org/monumental/#/object/Q638519|
-| [/Q184226?site=portal](https://tools.wmflabs.org/hub/Q184226?site=portal)                                             | https://tools.wmflabs.org/portal/Q184226             |
-| [/Q184226?site=reasonator](https://tools.wmflabs.org/hub/Q184226?site=reasonator)                                         | https://tools.wmflabs.org/reasonator/?q=Q184226      |
-| [/Q184226?site=scholia](https://tools.wmflabs.org/hub/Q184226?site=scholia)                                            | https://tools.wmflabs.org/scholia/Q184226            |
-| [/Q184226?site=sqid](https://tools.wmflabs.org/hub/Q184226?site=sqid)                                               | https://tools.wmflabs.org//sqid/#/view?id=Q184226    |
+| [/Q23936146?site=crotos](https://hub.toolforge.org/Q23936146?site=crotos)                                           | http://zone47.com/crotos/?q=Q23936146                |
+| [/Q184226?site=inventaire](https://hub.toolforge.org/Q184226?site=inventaire)                                         | https://inventaire.io/entity/wd:Q184226              |
+| [/Q638519?site=monumental](https://hub.toolforge.org/Q638519?site=monumental)                                         | https://tools.wmflabs.org/monumental/#/object/Q638519|
+| [/Q184226?site=portal](https://hub.toolforge.org/Q184226?site=portal)                                             | https://tools.wmflabs.org/portal/Q184226             |
+| [/Q184226?site=reasonator](https://hub.toolforge.org/Q184226?site=reasonator)                                         | https://tools.wmflabs.org/reasonator/?q=Q184226      |
+| [/Q184226?site=scholia](https://hub.toolforge.org/Q184226?site=scholia)                                            | https://tools.wmflabs.org/scholia/Q184226            |
+| [/Q184226?site=sqid](https://hub.toolforge.org/Q184226?site=sqid)                                               | https://tools.wmflabs.org//sqid/#/view?id=Q184226    |
 
 **short site names**
 
@@ -174,7 +174,7 @@ You can use short versions of those sites names:
 | `scholia`       | `sc`             |
 | `sqid`          | `sq`             |
 
-Example: [/Q184226?s=wq,wp,inv,wd&l=fr,en,de](https://tools.wmflabs.org/hub/Q184226?s=wq,wp,inv,wd&l=fr,en,de)
+Example: [/Q184226?s=wq,wp,inv,wd&l=fr,en,de](https://hub.toolforge.org/Q184226?s=wq,wp,inv,wd&l=fr,en,de)
 
 #### Following a claim
 
@@ -184,24 +184,24 @@ Pass a `property` parameter (or just `p`) to get the destination from the entity
 |---------------------------------------------------|---------------------------------------------------------------------------------------------------|
 |                                                   |                                                                                                   |
 | **Url**                                           |                                                                                                   |
-| [/Q21980377?property=P856](https://tools.wmflabs.org/hub/Q21980377?property=P856)                        | https://sci-hub.tw                                                                                |
-| [/Q1103345?property=P953](https://tools.wmflabs.org/hub/Q1103345?property=P953)                         | http://www.cluetrain.com/#manifesto                                                               |
-| [/Q756100?property=P1324](https://tools.wmflabs.org/hub/Q756100?property=P1324)                         | https://github.com/nodejs/node                                                                    |
-| [/Q132790?property=P4238,P856](https://tools.wmflabs.org/hub/Q132790?property=P4238,P856)                    | http://www.biarritz.fr/webcam_2.html                                                              |
+| [/Q21980377?property=P856](https://hub.toolforge.org/Q21980377?property=P856)                        | https://sci-hub.tw                                                                                |
+| [/Q1103345?property=P953](https://hub.toolforge.org/Q1103345?property=P953)                         | http://www.cluetrain.com/#manifesto                                                               |
+| [/Q756100?property=P1324](https://hub.toolforge.org/Q756100?property=P1324)                         | https://github.com/nodejs/node                                                                    |
+| [/Q132790?property=P4238,P856](https://hub.toolforge.org/Q132790?property=P4238,P856)                    | http://www.biarritz.fr/webcam_2.html                                                              |
 |                                                   |                                                                                                   |
 | **ExternalId**                                    |                                                                                                   |
-| [/Q34981?property=P1938](https://tools.wmflabs.org/hub/Q34981?property=P1938)                          | https://www.gutenberg.org/ebooks/author/35316                                                     |
-| [/Q624023?property=P2002,P2003](https://tools.wmflabs.org/hub/Q624023?property=P2002,P2003)                   | https://twitter.com/EFF                                                                           |
+| [/Q34981?property=P1938](https://hub.toolforge.org/Q34981?property=P1938)                          | https://www.gutenberg.org/ebooks/author/35316                                                     |
+| [/Q624023?property=P2002,P2003](https://hub.toolforge.org/Q624023?property=P2002,P2003)                   | https://twitter.com/EFF                                                                           |
 |                                                   |                                                                                                   |
 | **WikibaseItem**                                  |                                                                                                   |
-| [/Q155?property=P38](https://tools.wmflabs.org/hub/Q155?property=P38)                              | https://en.wikipedia.org/wiki/Brazilian_real                                                      |
+| [/Q155?property=P38](https://hub.toolforge.org/Q155?property=P38)                              | https://en.wikipedia.org/wiki/Brazilian_real                                                      |
 |                                                   |                                                                                                   |
 | **CommonsMedia**                                  |                                                                                                   |
-| [/Q241?property=P242](https://tools.wmflabs.org/hub/Q241?property=P242)                             | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg            |
-| [/Q241?property=P242&width=1000](https://tools.wmflabs.org/hub/Q241?property=P242&width=1000)                  | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
+| [/Q241?property=P242](https://hub.toolforge.org/Q241?property=P242)                             | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg            |
+| [/Q241?property=P242&width=1000](https://hub.toolforge.org/Q241?property=P242&width=1000)                  | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
 |                                                   |                                                                                                   |
 | **GlobeCoordinate**                               |                                                                                                   |
-| [/Q25373?property=P625](https://tools.wmflabs.org/hub/Q25373?property=P625)                           | https://www.openstreetmap.org/?mlat=35.2542&mlon=-24.2585                                         |
+| [/Q25373?property=P625](https://hub.toolforge.org/Q25373?property=P625)                           | https://www.openstreetmap.org/?mlat=35.2542&mlon=-24.2585                                         |
 |                                                   |                                                                                                   |
 
 Not supported: `String`, `Time`, `Monolingualtext`, `Quantity`, `WikibaseProperty`, `Math`
@@ -218,11 +218,11 @@ The `image` property is a bundles designed to be an easy way to give an image to
 
 |  **request**                                     | **redirection**                                                                                   |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| [/Q624023?property=image](https://tools.wmflabs.org/hub/Q624023?property=image)                        | https://commons.wikimedia.org/wiki/Special:FilePath/EFF_Logo.svg                                  |
-| [/Q624023?property=social](https://tools.wmflabs.org/hub/Q624023?property=social)                       | https://twitter.com/EFF                                                                           |
-| [/Q604319?property=social](https://tools.wmflabs.org/hub/Q604319?property=social)                       | https://tools.wmflabs.org/wikidata-externalid-url/?p=4033&id=LaQuadrature@mamot.fr                |
-| [/Q624023?property=image&width=120](https://tools.wmflabs.org/hub/Q624023?property=image&width=120)              | https://commons.wikimedia.org/wiki/Special:FilePath/EFF_Logo.svg?width=120                        |
-| [/Q241?p=P242&w=1000](https://tools.wmflabs.org/hub/Q241?p=P242&w=1000)                            | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
+| [/Q624023?property=image](https://hub.toolforge.org/Q624023?property=image)                        | https://commons.wikimedia.org/wiki/Special:FilePath/EFF_Logo.svg                                  |
+| [/Q624023?property=social](https://hub.toolforge.org/Q624023?property=social)                       | https://twitter.com/EFF                                                                           |
+| [/Q604319?property=social](https://hub.toolforge.org/Q604319?property=social)                       | https://tools.wmflabs.org/wikidata-externalid-url/?p=4033&id=LaQuadrature@mamot.fr                |
+| [/Q624023?property=image&width=120](https://hub.toolforge.org/Q624023?property=image&width=120)              | https://commons.wikimedia.org/wiki/Special:FilePath/EFF_Logo.svg?width=120                        |
+| [/Q241?p=P242&w=1000](https://hub.toolforge.org/Q241?p=P242&w=1000)                            | https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000 |
 
 ###### multiple properties
 
@@ -230,27 +230,27 @@ Did you ever wish to link to Stephan Zweig's (Q78491) spouse's (P26) place of de
 
 |  **request**                                     | **redirection**                                                                                   |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| [/Q78491?property=P26\|P20\|P131\|P421\|P18](https://tools.wmflabs.org/hub/Q78491?property=P26\|P20\|P131\|P421\|P18)         | https://commons.wikimedia.org/wiki/Special:FilePath/Timezones2008_UTC-5_gray.png                  |
+| [/Q78491?property=P26\|P20\|P131\|P421\|P18](https://hub.toolforge.org/Q78491?property=P26\|P20\|P131\|P421\|P18)         | https://commons.wikimedia.org/wiki/Special:FilePath/Timezones2008_UTC-5_gray.png                  |
 
 
 ### JSON
-You can get a JSON response (status code `200`) instead of a redirection (status code `302`) by adding the query parameter `format=json`. Ex: [/Q184226?lang=fr&format=json](https://tools.wmflabs.org/hub/Q184226?lang=fr&format=json)
+You can get a JSON response (status code `200`) instead of a redirection (status code `302`) by adding the query parameter `format=json`. Ex: [/Q184226?lang=fr&format=json](https://hub.toolforge.org/Q184226?lang=fr&format=json)
 This can be useful for debugging, or to use the internal resolver as a JSON API.
 
 |  **request**                           | **response**                                     |
 |----------------------------------------|--------------------------------------------------|
-| [/Q184226?lang=fr&format=json](https://tools.wmflabs.org/hub/Q184226?lang=fr&format=json)         | `{ origin: [Object], destination: [Object] }`    |
-| [/Q184226?l=fr&f=j](https://tools.wmflabs.org/hub/Q184226?l=fr&f=j)                    | `{ origin: [Object], destination: [Object] }`    |
+| [/Q184226?lang=fr&format=json](https://hub.toolforge.org/Q184226?lang=fr&format=json)         | `{ origin: [Object], destination: [Object] }`    |
+| [/Q184226?l=fr&f=j](https://hub.toolforge.org/Q184226?l=fr&f=j)                    | `{ origin: [Object], destination: [Object] }`    |
 
 ### Query the Hub as a search engine
 Building Hub URLs from the URL bar requires a few steps:
 - go to your browser URL bar (shortcut: `Ctrl+L` or `Alt+D`)
-- enter some keys to make your history suggest one of your previous `https://tools.wmflabs.org/hub/` URLs
-- edit the URL as you please. Example: https://tools.wmflabs.org/hub/Q1?l=fr
+- enter some keys to make your history suggest one of your previous `https://hub.toolforge.org/` URLs
+- edit the URL as you please. Example: https://hub.toolforge.org/Q1?l=fr
 
 But we could be even more lazy by adding Hub as a search engine to your browser (see tutorials hereafter for [firefox](#firefox) and [chrome](#chrome)). The steps can now be as follow (assuming you set `hub` as search engine keyword):
 - go to your browser URL bar (shortcut: `Ctrl+L` or `Alt+D`)
-- enter the URL elements as you would do if you where editing the `https://tools.wmflabs.org/hub/` URL, separating elements with spaces. Example: `hub Q1 l=fr`
+- enter the URL elements as you would do if you where editing the `https://hub.toolforge.org/` URL, separating elements with spaces. Example: `hub Q1 l=fr`
 
 #### Firefox
 - Follow this tutorial to add the Hub to your search engines list: [Add a search engine](https://support.mozilla.org/en-US/kb/add-or-remove-search-engine-firefox#w_add-a-search-engine)
@@ -266,7 +266,7 @@ But we could be even more lazy by adding Hub as a search engine to your browser 
 - in the **Other search engines** section, click **Add**, and fill as follow:
   - **Search Engine**: Hub
   - **Keyword**: hub
-  - **URL with %s instead of the request**: https://tools.wmflabs.org/hub/query?q=%s
+  - **URL with %s instead of the request**: https://hub.toolforge.org/query?q=%s
 - Try it:
   -  go to your browser address bar (shortcut: `Ctrl+L`)
   -  type `hub`, press `Tab`: the address bar should now display `Search on Hub`

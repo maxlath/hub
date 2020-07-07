@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const contentUrl = 'https://raw.githubusercontent.com/maxlath/hub/master'
-const hubBase = 'https://tools.wmflabs.org/hub'
+const hubBase = 'https://hub.toolforge.org'
 
 var text = `
 <!-- this file is built by ./scripts/build_readme
