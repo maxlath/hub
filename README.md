@@ -147,11 +147,11 @@ This can also include sites that can build URLs from Wikidata ids:
 |:-------------------------------------------------------------------|:-----------------------------------------------------|
 | [/Q23936146?site=crotos](https://hub.toolforge.org/Q23936146?site=crotos)                                           | http://zone47.com/crotos/?q=Q23936146                |
 | [/Q184226?site=inventaire](https://hub.toolforge.org/Q184226?site=inventaire)                                         | https://inventaire.io/entity/wd:Q184226              |
-| [/Q638519?site=monumental](https://hub.toolforge.org/Q638519?site=monumental)                                         | https://tools.wmflabs.org/monumental/#/object/Q638519|
-| [/Q184226?site=portal](https://hub.toolforge.org/Q184226?site=portal)                                             | https://tools.wmflabs.org/portal/Q184226             |
-| [/Q184226?site=reasonator](https://hub.toolforge.org/Q184226?site=reasonator)                                         | https://tools.wmflabs.org/reasonator/?q=Q184226      |
-| [/Q184226?site=scholia](https://hub.toolforge.org/Q184226?site=scholia)                                            | https://tools.wmflabs.org/scholia/Q184226            |
-| [/Q184226?site=sqid](https://hub.toolforge.org/Q184226?site=sqid)                                               | https://tools.wmflabs.org//sqid/#/view?id=Q184226    |
+| [/Q638519?site=monumental](https://hub.toolforge.org/Q638519?site=monumental)                                         | https://monumental.toolforge.org/#/object/Q638519|
+| [/Q184226?site=portal](https://hub.toolforge.org/Q184226?site=portal)                                             | https://portal.toolforge.org/Q184226             |
+| [/Q184226?site=reasonator](https://hub.toolforge.org/Q184226?site=reasonator)                                         | https://reasonator.toolforge.org/?q=Q184226      |
+| [/Q184226?site=scholia](https://hub.toolforge.org/Q184226?site=scholia)                                            | https://scholia.toolforge.org/Q184226            |
+| [/Q184226?site=sqid](https://hub.toolforge.org/Q184226?site=sqid)                                               | https:///.toolforge.orgsqid/#/view?id=Q184226    |
 
 **short site names**
 
@@ -291,7 +291,7 @@ npm run watch
 ```
 
 ### Deploy
-The step followed to setup this tool on tools.wmflabs.org are documented here: [deploy](https://github.com/maxlath/hub/blob/master/docs/deploy.md)
+The step followed to setup this tool on hub.toolforge.org are documented here: [deploy](https://github.com/maxlath/hub/blob/master/docs/deploy.md)
 
 ### See also
 

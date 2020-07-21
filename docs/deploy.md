@@ -17,13 +17,6 @@ Doc: [node.js web services](https://wikitech.wikimedia.org/wiki/Help:Toolforge/W
 mkdir -p ~/www
 cd ~/www
 git clone https://github.com/maxlath/hub js
-cd js
-
-echo "module.exports = {
-  host: 'https://tools.wmflabs.org',
-  // Customize root to match the URL passed by Nginx
-  root: '/hub'
-}" > config/local.js
 
 # Running npm with webservice shell to get more recent node/npm versions
 webservice --backend=kubernetes node10 shell
