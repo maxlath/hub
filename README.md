@@ -300,5 +300,5 @@ The step followed to setup this tool on hub.toolforge.org are documented here: [
 * All Wikimedia wikis, e.g. Wikipedia, can be [queried by MediaWiki API](https://en.wikipedia.org/w/api.php)
 
 ## License
-[AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[AGPL-3.0](https://github.com/maxlath/hub/blob/master/LICENSE)
 
