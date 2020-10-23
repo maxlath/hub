@@ -138,7 +138,7 @@ describe('sitelinks', function () {
     get('/Q4911143?site=scholia')
     .then(res => {
       res.statusCode.should.equal(302)
-      res.headers.get('location').should.equal('https://tools.wmflabs.org/scholia/Q4911143')
+      res.headers.get('location').should.equal('https://scholia.toolforge.org/Q4911143')
       done()
     })
     .catch(undesiredErr(done))
