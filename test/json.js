@@ -1,7 +1,7 @@
 require('should')
 const { get, undesiredErr } = require('./lib/utils')
 
-describe('json', function () {
+describe('json', () => {
   it('should return as json', done => {
     get('/Q184226?format=json')
     .then(res => {
