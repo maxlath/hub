@@ -51,6 +51,7 @@ for your next prototype, illustrate your concepts the lazy way:
     - [Following a claim](#following-a-claim)
         - [properties bundles](#properties-bundles)
         - [multiple properties](#multiple-properties)
+    - [fallback](#fallback)
   - [JSON](#json)
   - [Query the Hub as a search engine](#query-the-hub-as-a-search-engine)
     - [Firefox](#firefox)
@@ -151,7 +152,7 @@ This can also include sites that can build URLs from Wikidata ids:
 | [/Q184226?site=portal](https://hub.toolforge.org/Q184226?site=portal)                                             | https://portal.toolforge.org/Q184226             |
 | [/Q184226?site=reasonator](https://hub.toolforge.org/Q184226?site=reasonator)                                         | https://reasonator.toolforge.org/?q=Q184226      |
 | [/Q184226?site=scholia](https://hub.toolforge.org/Q184226?site=scholia)                                            | https://scholia.toolforge.org/Q184226            |
-| [/Q184226?site=sqid](https://hub.toolforge.org/Q184226?site=sqid)                                               | https:///.toolforge.orgsqid/#/view?id=Q184226    |
+| [/Q184226?site=sqid](https://hub.toolforge.org/Q184226?site=sqid)                                               | https://sqid.toolforge.org/#/view?id=Q184226    |
 
 **short site names**
 
@@ -232,6 +233,14 @@ Did you ever wish to link to Stephan Zweig's (Q78491) spouse's (P26) place of de
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------|
 | [/Q78491?property=P26\|P20\|P131\|P421\|P18](https://hub.toolforge.org/Q78491?property=P26\|P20\|P131\|P421\|P18)         | https://commons.wikimedia.org/wiki/Special:FilePath/Timezones2008_UTC-5_gray.png                  |
 
+#### fallback
+
+By default, when a destination is not found, you are redirected to the Wikidata entity page. This behavior can be customized:
+
+|  **request**                                                             | **redirection**                                             |
+|--------------------------------------------------------------------------|-------------------------------------------------------------|
+| [/Q32689091?property=image&fallback=404](https://hub.toolforge.org/Q32689091?property=image&fallback=404)                                 | 404 response                                                |
+| [/Q32689091?property=image&fallback=http%3A%2F%2Fexample.org%2F404.png](https://hub.toolforge.org/Q32689091?property=image&fallback=http%3A%2F%2Fexample.org%2F404.png)  | http://example.org/404.png                                  |
 
 ### JSON
 You can get a JSON response (status code `200`) instead of a redirection (status code `302`) by adding the query parameter `format=json`. Ex: [/Q184226?lang=fr&format=json](https://hub.toolforge.org/Q184226?lang=fr&format=json)
@@ -291,7 +300,7 @@ npm run watch
 ```
 
 ### Deploy
-The step followed to setup this tool on hub.toolforge.org are documented here: [deploy](https://github.com/maxlath/hub/blob/master/docs/deploy.md)
+The step followed to setup this tool on tools.wmflabs.org are documented here: [deploy](https://github.com/maxlath/hub/blob/master/docs/deploy.md)
 
 ### See also
 
@@ -300,5 +309,5 @@ The step followed to setup this tool on hub.toolforge.org are documented here: [
 * All Wikimedia wikis, e.g. Wikipedia, can be [queried by MediaWiki API](https://en.wikipedia.org/w/api.php)
 
 ## License
-[AGPL-3.0](https://github.com/maxlath/hub/blob/master/LICENSE)
+[AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.en.html)
 
