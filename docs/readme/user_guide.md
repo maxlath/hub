@@ -175,6 +175,13 @@ By default, when a destination is not found, you are redirected to the Wikidata 
 | `/Q32689091?property=image&fallback=404`                                 | 404 response                                                |
 | `/Q32689091?property=image&fallback=http%3A%2F%2Fexample.org%2F404.png`  | http://example.org/404.png                                  |
 
+In the case where you use a URL as a fallback, make sure that it is [URL-encoded](https://en.wikipedia.org/wiki/Percent-encoding). In Javascript for example, that could be done like this:
+```js
+const fallbackUrl = 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Wikimedia_error_404.png'
+const encodedFallbackUrl = encodeURIComponent(fallbackUrl)
+const url = `https://hub.toolforge.org/Q32689091?property=image&fallback=${encodedFallbackUrl}`
+```
+
 ### JSON
 You can get a JSON response (status code `200`) instead of a redirection (status code `302`) by adding the query parameter `format=json`. Ex: `/Q184226?lang=fr&format=json`
 This can be useful for debugging, or to use the internal resolver as a JSON API.
