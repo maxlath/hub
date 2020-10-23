@@ -1,5 +1,5 @@
 require('should')
-const { get, undesiredRes, undesiredErr } = require('./lib/utils')
+const { get, undesiredRes } = require('./lib/utils')
 
 describe('property', function () {
   this.timeout(10000)
@@ -12,7 +12,7 @@ describe('property', function () {
       err.body.message.should.equal('unknown property id')
       done()
     })
-    .catch(undesiredErr(done))
+    .catch(done)
   })
 
   it('should reject unsupported properties', done => {
@@ -23,7 +23,7 @@ describe('property', function () {
       err.body.message.should.equal('unsupported property type')
       done()
     })
-    .catch(undesiredErr(done))
+    .catch(done)
   })
 
   it('should accept parameters short version', done => {
@@ -33,7 +33,7 @@ describe('property', function () {
       res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000')
       done()
     })
-    .catch(undesiredErr(done))
+    .catch(done)
   })
 
   it('should accept properties a numeric id', done => {
@@ -43,7 +43,7 @@ describe('property', function () {
       res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Animal_Farm_-_1st_edition.jpg')
       done()
     })
-    .catch(undesiredErr(done))
+    .catch(done)
   })
 
   it('should accept properties numeric ids', done => {
@@ -53,7 +53,7 @@ describe('property', function () {
       res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Animal_Farm_-_1st_edition.jpg')
       done()
     })
-    .catch(undesiredErr(done))
+    .catch(done)
   })
 
   it('should fallback', done => {
@@ -63,7 +63,7 @@ describe('property', function () {
       res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg')
       done()
     })
-    .catch(undesiredErr(done))
+    .catch(done)
   })
 
   it('should support properties', done => {
@@ -73,7 +73,7 @@ describe('property', function () {
       res.headers.get('location').should.equal('https://en.wikipedia.org/wiki/Norway')
       done()
     })
-    .catch(undesiredErr(done))
+    .catch(done)
   })
 
   describe('Url', () => {
@@ -84,7 +84,7 @@ describe('property', function () {
         res.headers.get('location').should.equal('https://www.w3.org/')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
   })
 
@@ -96,7 +96,7 @@ describe('property', function () {
         res.headers.get('location').should.equal('https://www.gutenberg.org/ebooks/author/35316')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
   })
 
@@ -108,7 +108,7 @@ describe('property', function () {
         res.headers.get('location').should.equal('https://en.wikipedia.org/wiki/Brazilian_real')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
 
     it('should pass the site parameters to the sub redirection', done => {
@@ -118,7 +118,7 @@ describe('property', function () {
         res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q173117')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
 
     it('should pass the lang parameters to the sub redirection', done => {
@@ -128,7 +128,7 @@ describe('property', function () {
         res.headers.get('location').should.equal('https://nl.wikipedia.org/wiki/Braziliaanse_real')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
   })
 
@@ -140,7 +140,7 @@ describe('property', function () {
         res.headers.get('location').should.equal('https://www.openstreetmap.org/?mlat=45.758888888889&mlon=4.8413888888889')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
   })
 
@@ -152,7 +152,7 @@ describe('property', function () {
         res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
     it('should accept a width parameters', done => {
       get('/Q241?property=P242&width=1000')
@@ -161,7 +161,7 @@ describe('property', function () {
         res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg?width=1000')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
   })
 
@@ -173,7 +173,7 @@ describe('property', function () {
         res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Cuba.svg')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
 
     it("should accept an 'social' bundles", done => {
@@ -183,18 +183,18 @@ describe('property', function () {
         res.headers.get('location').should.equal('https://twitter.com/Snowden')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
 
-    // Unfortunately, avatars.io is down
+    // not implemented yet
     xit("should make use of external id avatars in the 'avatar' bundle", done => {
       get('/Q4032?property=avatar&width=150')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.get('location').should.equal('https://avatars.io/twitter/UnivLyon1/large')
+        res.headers.get('location').should.equal('https://unavatar.now.sh/twitter/UnivLyon1')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
 
     it('should find properties with a matching label', done => {
@@ -204,20 +204,21 @@ describe('property', function () {
         res.headers.get('location').should.equal('https://www.gutenberg.org/ebooks/author/35316')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
   })
 
   describe('multi properties', () => {
     it('should follow 2 properties', done => {
       // Inspired by https://twitter.com/salgo60/status/1010471186164277248
-      get('/P3217:15780?property=P19|P5324')
+      get('/P3217:15780?property=P19|P856')
       .then(res => {
         res.statusCode.should.equal(302)
-        res.headers.get('location').should.equal('https://www.stockholm.se')
+        res.headers.get('location').should.startWith('http')
+        res.headers.get('location').should.containEql('stockholm')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
 
     it('should follow several properties', done => {
@@ -227,7 +228,7 @@ describe('property', function () {
         res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Timezones2008_UTC-5_gray.png')
         done()
       })
-      .catch(undesiredErr(done))
+      .catch(done)
     })
 
     it('should reject property values not found', done => {

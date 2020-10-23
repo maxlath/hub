@@ -166,6 +166,14 @@ Did you ever wish to link to Stephan Zweig's (Q78491) spouse's (P26) place of de
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------|
 | `/Q78491?property=P26\|P20\|P131\|P421\|P18`         | https://commons.wikimedia.org/wiki/Special:FilePath/Timezones2008_UTC-5_gray.png                  |
 
+#### fallback
+
+By default, when a destination is not found, you are redirected to the Wikidata entity page. This behavior can be customized:
+
+|  **request**                                                             | **redirection**                                             |
+|--------------------------------------------------------------------------|-------------------------------------------------------------|
+| `/Q32689091?property=image&fallback=404`                                 | 404 response                                                |
+| `/Q32689091?property=image&fallback=http%3A%2F%2Fexample.org%2F404.png`  | http://example.org/404.png                                  |
 
 ### JSON
 You can get a JSON response (status code `200`) instead of a redirection (status code `302`) by adding the query parameter `format=json`. Ex: `/Q184226?lang=fr&format=json`
