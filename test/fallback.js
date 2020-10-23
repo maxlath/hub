@@ -2,6 +2,16 @@ require('should')
 const { get, undesiredRes } = require('./lib/utils')
 
 describe('fallback', () => {
+  it('should fallback to the Wikidata entity by default', done => {
+    get('/Q32689091?property=image')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q32689091')
+      done()
+    })
+    .catch(done)
+  })
+
   it('should fallback with a 404 when requested', done => {
     get('/Q32689091?property=image&fallback=404')
     .then(undesiredRes(done))
