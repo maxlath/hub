@@ -44,6 +44,26 @@ describe('sitelinks', function () {
     .catch(undesiredErr(done))
   })
 
+  it('should take site=wikidata from the query', done => {
+    get('/Q184226?site=wikidata')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q184226')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
+  it('should take site=commons from the query', done => {
+    get('/Q15572052?site=commons')
+    .then(res => {
+      res.statusCode.should.equal(302)
+      res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Category:Xanthium%20orientale')
+      done()
+    })
+    .catch(undesiredErr(done))
+  })
+
   it('should combine site and lang query parameters', done => {
     get('/Q184226?site=wikiquote&lang=fr')
     .then(res => {
