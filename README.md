@@ -123,12 +123,12 @@ By default, the destination is Wikipedia in the user language, which is guessed 
 #### Wikimedia Projects
 ###### lang
 
-Pass a `lang` parameter (or just `l`) to override the `accept-language` header. Pass several values to set the fallback chain.
+Pass a `lang` parameter (or just `l`) to override the `accept-language` header. Pass several values to set the fallback chain. The value `auto` can be used to represent the value of the `accept-language` header.
 
-|  request                                    | redirection                                          |
-|:--------------------------------------------|:-----------------------------------------------------|
-| [/Q184226?lang=fr](https://hub.toolforge.org/Q184226?lang=fr)                          | https://fr.wikipedia.org/wiki/Gilles_Deleuze         |
-| [/Q184226?lang=als,oc,fr,en&site=wikiquote](https://hub.toolforge.org/Q184226?lang=als,oc,fr,en&site=wikiquote) | https://oc.wikipedia.org/wiki/Gilles_Deleuze         |
+|  request                                         | redirection                                          |
+|:-------------------------------------------------|:-----------------------------------------------------|
+| [/Q184226?lang=fr](https://hub.toolforge.org/Q184226?lang=fr)                               | https://fr.wikipedia.org/wiki/Gilles_Deleuze         |
+| [/Q184226?lang=als,oc,auto,fr,en&site=wikiquote](https://hub.toolforge.org/Q184226?lang=als,oc,auto,fr,en&site=wikiquote) | https://oc.wikipedia.org/wiki/Gilles_Deleuze         |
 
 ###### site
 
@@ -241,6 +241,13 @@ By default, when a destination is not found, you are redirected to the Wikidata 
 |--------------------------------------------------------------------------|-------------------------------------------------------------|
 | [/Q32689091?property=image&fallback=404](https://hub.toolforge.org/Q32689091?property=image&fallback=404)                                 | 404 response                                                |
 | [/Q32689091?property=image&fallback=http%3A%2F%2Fexample.org%2F404.png](https://hub.toolforge.org/Q32689091?property=image&fallback=http%3A%2F%2Fexample.org%2F404.png)  | http://example.org/404.png                                  |
+
+In the case where you use a URL as a fallback, make sure that it is [URL-encoded](https://en.wikipedia.org/wiki/Percent-encoding). In Javascript for example, that could be done like this:
+```js
+const fallbackUrl = 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Wikimedia_error_404.png'
+const encodedFallbackUrl = encodeURIComponent(fallbackUrl)
+const url = `https://hub.toolforge.org/Q32689091?property=image&fallback=${encodedFallbackUrl}`
+```
 
 ### JSON
 You can get a JSON response (status code `200`) instead of a redirection (status code `302`) by adding the query parameter `format=json`. Ex: [/Q184226?lang=fr&format=json](https://hub.toolforge.org/Q184226?lang=fr&format=json)
