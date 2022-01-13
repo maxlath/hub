@@ -47,9 +47,9 @@ describe('property', function () {
   })
 
   it('should support properties', async () => {
-    const res = await get('/P610?p=P1855')
+    const res = await get('/P610?p=P3254')
     res.statusCode.should.equal(302)
-    res.headers.get('location').should.equal('https://en.wikipedia.org/wiki/Norway')
+    res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Wikidata:Property_proposal/Archive/8#P610')
   })
 
   describe('Url', () => {
