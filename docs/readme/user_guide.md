@@ -56,12 +56,12 @@ By default, the destination is Wikipedia in the user language, which is guessed 
 #### Wikimedia Projects
 ###### lang
 
-Pass a `lang` parameter (or just `l`) to override the `accept-language` header. Pass several values to set the fallback chain.
+Pass a `lang` parameter (or just `l`) to override the `accept-language` header. Pass several values to set the fallback chain. The value `auto` can be used to represent the value of the `accept-language` header.
 
-|  request                                    | redirection                                          |
-|:--------------------------------------------|:-----------------------------------------------------|
-| `/Q184226?lang=fr`                          | https://fr.wikipedia.org/wiki/Gilles_Deleuze         |
-| `/Q184226?lang=als,oc,fr,en&site=wikiquote` | https://oc.wikipedia.org/wiki/Gilles_Deleuze         |
+|  request                                         | redirection                                          |
+|:-------------------------------------------------|:-----------------------------------------------------|
+| `/Q184226?lang=fr`                               | https://fr.wikipedia.org/wiki/Gilles_Deleuze         |
+| `/Q184226?lang=als,oc,auto,fr,en&site=wikiquote` | https://oc.wikipedia.org/wiki/Gilles_Deleuze         |
 
 ###### site
 

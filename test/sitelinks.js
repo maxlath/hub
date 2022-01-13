@@ -22,6 +22,12 @@ describe('sitelinks', function () {
     res.headers.get('location').should.equal('https://de.wikipedia.org/wiki/Gilles_Deleuze')
   })
 
+  it('should use the header in auto mode', async () => {
+    const res = await get('/Q184226?lang=auto,de,fr', 'es')
+    res.statusCode.should.equal(302)
+    res.headers.get('location').should.equal('https://es.wikipedia.org/wiki/Gilles_Deleuze')
+  })
+
   it('should take the site from the query', async () => {
     const res = await get('/Q184226?site=wikiquote')
     res.statusCode.should.equal(302)
