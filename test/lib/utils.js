@@ -20,5 +20,14 @@ module.exports = {
   undesiredErr: done => err => {
     done(err)
     logger.warn('undesired err body', err.body || err)
-  }
+  },
+
+  shouldNotBeCalled: res => {
+    logger.warn('undesired positive res', res)
+    const err = new Error('function was expected not to be called')
+    // Give 'shouldNotBeCalled' more chance to appear in the red text of the failing test
+    err.name = err.statusCode = 'shouldNotBeCalled'
+    err.context = { res }
+    throw err
+  },
 }

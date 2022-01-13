@@ -1,36 +1,26 @@
 require('should')
-const { get, undesiredRes } = require('./lib/utils')
+const { get, shouldNotBeCalled } = require('./lib/utils')
 
 describe('fallback', () => {
-  it('should fallback to the Wikidata entity by default', done => {
-    get('/Q32689091?property=image')
-    .then(res => {
-      res.statusCode.should.equal(302)
-      res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q32689091')
-      done()
-    })
-    .catch(done)
+  it('should fallback to the Wikidata entity by default', async () => {
+    const res = await get('/Q32689091?property=image')
+    res.statusCode.should.equal(302)
+    res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q32689091')
   })
 
-  it('should fallback with a 404 when requested', done => {
-    get('/Q32689091?property=image&fallback=404')
-    .then(undesiredRes(done))
+  it('should fallback with a 404 when requested', async () => {
+    await get('/Q32689091?property=image&fallback=404')
+    .then(shouldNotBeCalled)
     .catch(err => {
       err.statusCode.should.equal(404)
-      done()
     })
-    .catch(done)
   })
 
-  it('should fallback with an image when requested', done => {
+  it('should fallback with an image when requested', async () => {
     const fallbackUrl = 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Wikimedia_error_404.png'
     const encodedFallbackUrl = encodeURIComponent(fallbackUrl)
-    get(`/Q32689091?property=image&fallback=${encodedFallbackUrl}`)
-    .then(res => {
-      res.statusCode.should.equal(302)
-      res.headers.get('location').should.equal(fallbackUrl)
-      done()
-    })
-    .catch(done)
+    const res = await get(`/Q32689091?property=image&fallback=${encodedFallbackUrl}`)
+    res.statusCode.should.equal(302)
+    res.headers.get('location').should.equal(fallbackUrl)
   })
 })
