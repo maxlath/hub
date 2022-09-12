@@ -7,7 +7,7 @@ const { keyBy } = require('../lib/utils')
 const promises = Object.values(properties)
   .filter(isUrlifyableProperty)
   .map(propertyData => {
-    var { property, label, logo, urlFormat } = propertyData
+    let { property, label, logo, urlFormat } = propertyData
     label = formatLabel(label)
     // Spreading calls on a some seconds
     return wait(randomDelay())
@@ -22,7 +22,6 @@ const promises = Object.values(properties)
     })
   })
 
-const index = {}
 Promise.all(promises)
 .then(propertiesData => {
   const index = keyBy(propertiesData, 'property')
