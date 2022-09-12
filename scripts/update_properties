@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -eu
 
+mkdir -p ./assets/js
+
 echo "updating properties"
 wd sparql ./scripts/assets/properties.rq --index property > ./scripts/assets/properties.json
 
