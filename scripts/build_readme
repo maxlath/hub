@@ -3,12 +3,11 @@ const fs = require('fs')
 const contentUrl = 'https://raw.githubusercontent.com/maxlath/hub/master'
 const hubBase = 'https://hub.toolforge.org'
 
-var text = `
+let text = `
 <!-- this file is built by ./scripts/build_readme
 Make your edits in docs/readme -->
 
 `
-
 
 const addFile = filename => {
   text += fs.readFileSync(`./docs/readme/${filename}.md`)
