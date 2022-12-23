@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs')
-const properties = require('../lib/properties')
-var index = {}
+const properties = require('../assets/js/properties')
+const index = {}
 
 const indexPropertyByLabel = property => {
   const { label } = properties[property]
@@ -45,7 +45,7 @@ const indexWord = (property, word) => {
   if (!index[word].includes(property)) index[word].push(property)
 }
 
-for (let property in properties) {
+for (const property in properties) {
   const { type, authority } = properties[property]
   if (type === 'ExternalId' || (type === 'String' && authority)) {
     indexPropertyByLabel(property)
