@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const properties = require('../assets/js/properties')
+const { uniq } = require('../lib/utils')
 const index = {}
 
 const indexPropertyByLabel = property => {
@@ -25,9 +26,9 @@ const indexPropertyByLabel = property => {
 }
 
 const indexPropertyByAliases = property => {
-  properties[property].aliases
-  .split('\n')
-  .forEach(indexWord.bind(null, property))
+  let aliases = properties[property].aliases.split('\n')
+  aliases = uniq(aliases)
+  aliases.forEach(indexWord.bind(null, property))
 }
 
 const formatIndexWord = str => {
