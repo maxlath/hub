@@ -104,5 +104,11 @@ describe('aliases', function () {
       res.statusCode.should.equal(302)
       res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q624023')
     })
+
+    it('should support lexems', async () => {
+      const res = await get('/P10041:19380')
+      res.statusCode.should.equal(302)
+      res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Lexeme:L746325')
+    })
   })
 })
