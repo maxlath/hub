@@ -21,7 +21,7 @@ git clone https://github.com/maxlath/hub js
 # Running npm with webservice shell to get more recent node/npm versions
 toolforge webservice node20 shell
 cd $HOME/www/js
-npm install --production
+npm install --omit=dev
 toolforge webservice node20 start
 ```
 
