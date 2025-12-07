@@ -1,6 +1,7 @@
-require('should')
-const { get } = require('./lib/utils')
-const base = require('config').base()
+import 'should'
+import { base } from '../lib/config.js'
+import { get } from './lib/utils.js'
+
 const parseLocation = res => res.headers.get('location').replace(base, '')
 
 describe('query', () => {

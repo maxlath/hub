@@ -1,5 +1,5 @@
-require('should')
-const { get } = require('./lib/utils')
+import 'should'
+import { get } from './lib/utils.js'
 
 describe('sitelinks', function () {
   this.timeout(10000)

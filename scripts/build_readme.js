@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-const fs = require('fs')
+import { readFileSync, writeFileSync } from 'node:fs'
+
 const contentUrl = 'https://raw.githubusercontent.com/maxlath/hub/master'
 const hubBase = 'https://hub.toolforge.org'
 
@@ -9,12 +10,12 @@ Make your edits in docs/readme -->
 
 `
 
-const addFile = filename => {
-  text += fs.readFileSync(`./docs/readme/${filename}.md`)
+function addFile (filename) {
+  text += readFileSync(`./docs/readme/${filename}.md`)
     .toString()
     // Having those links directly  would make way too long lines
     // to be workable with all those tables
-    .replace(/\`(\/[^`]*)\`/g, `[$1](${hubBase}$1)`)
+    .replace(/`(\/[^`]*)`/g, `[$1](${hubBase}$1)`)
     .replace(/\(\//g, `(${hubBase}/`)
     .replace(/assets\/images/g, `${contentUrl}/assets/images`)
 
@@ -25,4 +26,4 @@ addFile('base')
 addFile('user_guide')
 addFile('developer_guide')
 
-fs.writeFileSync('./README.md', text)
+writeFileSync('./README.md', text)

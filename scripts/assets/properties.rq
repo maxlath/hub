@@ -19,7 +19,7 @@ WHERE {
   }
   OPTIONAL {
     ?property wdt:P31/wdt:P279* wd:Q18614948 .
-    BIND (TRUE AS ?authority)
+    BIND ('1' AS ?authority)
   }
 }
 GROUP BY ?property ?label ?type ?urlFormat ?authority ?logo

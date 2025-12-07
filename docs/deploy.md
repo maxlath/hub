@@ -12,16 +12,17 @@ become hub
 ```
 
 **4 - install the project**
-Doc: [node.js web services](https://wikitech.wikimedia.org/wiki/Help:Toolforge/Web#node.js_web_services)
+Doc: [node.js web services](https://wikitech.wikimedia.org/wiki/Help:Toolforge/Node.js)
 ```sh
 mkdir -p ~/www
 cd ~/www
 git clone https://github.com/maxlath/hub js
 
 # Running npm with webservice shell to get more recent node/npm versions
-webservice --backend=kubernetes node10 shell
+toolforge webservice node20 shell
+cd $HOME/www/js
 npm install --production
-webservice --backend=kubernetes node10 start
+toolforge webservice node20 start
 ```
 
 **5 - Follow the logs**

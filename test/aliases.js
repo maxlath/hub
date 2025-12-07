@@ -1,5 +1,5 @@
-require('should')
-const { get, shouldNotBeCalled } = require('./lib/utils')
+import 'should'
+import { get, shouldNotBeCalled } from './lib/utils.js'
 
 describe('aliases', function () {
   this.timeout(10000)
@@ -44,7 +44,7 @@ describe('aliases', function () {
     it('should default to the wiki in the user language', async () => {
       const res = await get('/velo', 'fr')
       res.statusCode.should.equal(302)
-      res.headers.get('location').should.equal('https://fr.wikipedia.org/wiki/Bicyclette')
+      res.headers.get('location').should.equal('https://fr.wikipedia.org/wiki/V%C3%A9lo')
     })
 
     it('should fallback on the first search result when no entity can be found from sitelinks', async () => {
@@ -56,7 +56,7 @@ describe('aliases', function () {
     it('should default to wiki sitelink project', async () => {
       const res = await get('/fr:COURLY')
       res.statusCode.should.equal(302)
-      res.headers.get('location').should.equal('https://en.wikipedia.org/wiki/Lyon_Metropolis')
+      res.headers.get('location').should.equal('https://en.wikipedia.org/wiki/Metropolis_of_Lyon')
     })
 
     it('should reject an invalid sitelink', async () => {
@@ -82,7 +82,7 @@ describe('aliases', function () {
     })
 
     it('should guess possible properties from a string key matching properties labels', async () => {
-      const res = await get('/twitter:EFF?s=wd')
+      const res = await get('/instagram:efforg?s=wd')
       res.statusCode.should.equal(302)
       res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q624023')
     })
@@ -100,7 +100,7 @@ describe('aliases', function () {
     })
 
     it('should support multiple properties with a mix of properties and strings', async () => {
-      const res = await get('/P4033,twitter,P2003:EFF?site=wikidata')
+      const res = await get('/P4033,linkedin,P2003:efforg?site=wikidata')
       res.statusCode.should.equal(302)
       res.headers.get('location').should.equal('https://www.wikidata.org/wiki/Q624023')
     })

@@ -1,5 +1,5 @@
-require('should')
-const { get, shouldNotBeCalled } = require('./lib/utils')
+import 'should'
+import { get, shouldNotBeCalled } from './lib/utils.js'
 
 describe('property', function () {
   this.timeout(10000)
@@ -43,7 +43,7 @@ describe('property', function () {
   it('should fallback', async () => {
     const res = await get('/Q241?property=P18,P242,P94,P2002')
     res.statusCode.should.equal(302)
-    res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Cuba_(orthographic_projection).svg')
+    res.headers.get('location').should.equal('https://commons.wikimedia.org/wiki/Special:FilePath/Santa_Clara_(Cuba).jpg')
   })
 
   it('should support properties', async () => {

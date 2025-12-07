@@ -1,5 +1,5 @@
-require('should')
-const { get, shouldNotBeCalled } = require('./lib/utils')
+import 'should'
+import { get, shouldNotBeCalled } from './lib/utils.js'
 
 describe('fallback', () => {
   it('should fallback to the Wikidata entity by default', async () => {
