@@ -30,7 +30,7 @@
     "github-markdown-css": "^2.9.0",
     "node-fetch": "^3.3.2",
     "tiny-chalk": "^3.0.2",
-    "wikibase-cli": "^19.2.0",
+    "wikibase-cli": "^19.2.1",
     "wikibase-sdk": "^11.1.1",
     "wikidata-lang": "^2.0.8"
   },
