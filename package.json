@@ -70,10 +70,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maxlath/hub.git"
+    "url": "https://codeberg.org/maxlath/hub"
   },
   "bugs": {
-    "url": "https://github.com/maxlath/hub/issues"
+    "url": "https://codeberg.org/maxlath/hub/issues"
   },
-  "homepage": "https://github.com/maxlath/hub#readme"
+  "homepage": "https://codeberg.org/maxlath/hub#readme"
 }
