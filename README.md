@@ -292,14 +292,14 @@ But we could be even more lazy by adding Hub as a search engine to your browser 
 ## Developer Guide
 
 * Wikimedia Toolforge: https://toolsadmin.wikimedia.org/tools/id/hub
-* Source code: https://github.com/maxlath/hub
+* Source code: https://codeberg.org/maxlath/hub
 
 ### Dependencies
 * [NodeJS](https://nodejs.org) `>v6.4.0` (recommanded way to install: [NVM](https://github.com/creationix/nvm))
 
 ### Install
 ```sh
-git clone https://github.com/maxlath/hub
+git clone https://codeberg.org/maxlath/hub
 cd hub
 npm install
 # Starts the server on port 2580 and watch for files changes to restart
@@ -307,7 +307,7 @@ npm run watch
 ```
 
 ### Deploy
-The step followed to setup this tool on tools.wmflabs.org are documented here: [deploy](https://github.com/maxlath/hub/blob/master/docs/deploy.md)
+The step followed to setup this tool on tools.wmflabs.org are documented here: [deploy](https://codeberg.org/maxlath/hub/src/branch/main/docs/deploy.md)
 
 ### See also
 
